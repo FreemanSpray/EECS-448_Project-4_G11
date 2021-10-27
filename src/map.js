@@ -5,11 +5,11 @@ class Map{
         this.tiles = []
 
         for(let i = 0; i < this.xWidth; i++){
-            this.tiles[i] = new Array()
+            this.tiles[i] = []
         }
 
-        for (let y = 0; y < this.yHeight; y++){
-            for (let x = 0; x < this.xWidth; x++) {
+        for (let x = 0; x < this.xWidth; x++){
+            for (let y = 0; y < this.yHeight; y++) {
                 this.tiles[x][y] = new Tile(x, y)
             }
         }
