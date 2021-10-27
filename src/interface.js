@@ -36,8 +36,18 @@ function drawTemplate() {
     }
 }
 
-function drawVisibleUnits() {
+function drawUnit(unit){
 
+}
+
+function drawUnits() {
+    for(let x = 0; x < xWidth; x++){
+        for(let y = 0; y < yHeight; y++){
+            if(map.tiles[xWidth][yHeight].unit != null){
+                ctx.fillText(map.tiles[xWidth][yHeight].unit.symbol, map.tiles[xWidth][yHeight].xPos, map.tiles[xWidth][yHeight].yPos)
+            }
+        }
+    }
 }
 
 function drawInvisibleUnits() {
