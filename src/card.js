@@ -9,9 +9,3 @@ class Hand{
 
     }
 }
-
-class Deck{
-    constructor(){
-        
-    }
-}

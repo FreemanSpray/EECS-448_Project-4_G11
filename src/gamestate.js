@@ -1,5 +1,5 @@
-let turn
-let tileSelected
+let turn = 1
+let tileSelected = null
 let unitSelected = null
-let actionSelected
-let cardSelected
+let actionSelected = null
+let cardSelected = null

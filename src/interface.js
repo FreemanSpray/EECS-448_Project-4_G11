@@ -1,10 +1,6 @@
 let canvas
 let context
 
-document.addEventListener("DOMContentLoaded", () => {
-    drawTemplate();
-});
-
 function drawTemplate() {
 
     // draw board
