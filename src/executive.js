@@ -1,3 +1,11 @@
+function passTurn(){
+    tileSelected = null
+    unitSelected = null
+    actionSelected = null
+    cardSelected = null
+    turn = (turn % 2) + 1
+}
+
 function executeTileTriggers(tile, flag){
     for(let i = 0; i < tile.triggers.length; i++){
         if(tile.triggers[i].flagID == flag){
@@ -35,4 +43,6 @@ function executeAction(target){
             }
         }
     }
+
+    passTurn()
 }

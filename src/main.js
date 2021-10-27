@@ -71,6 +71,7 @@ function clickProcessing(x, y){
 }
 
 document.addEventListener("click", e => {
+    console.log(e)
     console.log([e.x, e.y])
     clickProcessing(e.x, e.y)
 })
