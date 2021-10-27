@@ -1,6 +1,6 @@
 class Player{
-    constructor(playerID, hand){
+    constructor(playerID){
          this.playerID = playerID
-         this.hand = hand
+         this.hand = new Hand()
     }
 }
