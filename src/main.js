@@ -9,22 +9,36 @@ function initialize(){
     player2 = new Player(2)
 }
 
-function canvasRounding(xPos, yPos){
-    
+function canvasRounding(x, y){
+    let section = 0
+    if(x > 134 && x < 1535 && y > 8 && y < 608){
+        section = 1
+    }
+    else if(x > 134 && x < 1035 && y > 626 && y < 827){
+        section = 2
+    }
+    else if(x > 1045 && x < 1535 && y > 626 && y < 827){
+        section = 3
+    }
+    console.log(section)
+    return(section)
 }
 
 //this needs to return a tile
-function tileRounding(xPos, yPos){
-
+function tileRounding(x, y){
+    roundedXCoordinate = Math.floor((x - 134)/40)
+    roundedYCoordinate = Math.floor((y - 8)/40)
+    console.log([roundedXCoordinate, roundedYCoordinate])
+    return(map.tiles[roundedXCoordinate][roundedYCoordinate])
 }
 
 //this needs to return a card
-function cardRounding(xPos, yPos){
+function cardRounding(x, y){
 
 }
 
 //this needs to return an action
-function actionRounding(xPos, yPos){
+function actionRounding(x, y){
 
 }
 
