@@ -3,6 +3,13 @@ let context
 
 function drawTemplate() {
 
+    drawBoard();
+    drawCards();
+
+
+}
+
+function drawBoard() {
     // draw board
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
@@ -21,7 +28,9 @@ function drawTemplate() {
         ctx.strokeStyle = "black";
         ctx.stroke();
     }
+}
 
+function drawCards() {
     //draw cards
     canvas = document.getElementById("cards");
     ctx = canvas.getContext("2d");
@@ -36,6 +45,7 @@ function drawTemplate() {
     }
 }
 
+
 function drawVisibleUnits() {
 
 }
@@ -44,9 +54,7 @@ function drawInvisibleUnits() {
 
 }
 
-function drawHand() {
 
-}
 
 function drawSelectedInfo() {
 
