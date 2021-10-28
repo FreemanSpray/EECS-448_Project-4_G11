@@ -41,10 +41,10 @@ function drawUnit(unit){
 }
 
 function drawUnits() {
-    for(let x = 0; x < xWidth; x++){
-        for(let y = 0; y < yHeight; y++){
-            if(map.tiles[xWidth][yHeight].unit != null){
-                ctx.fillText(map.tiles[xWidth][yHeight].unit.symbol, map.tiles[xWidth][yHeight].xPos, map.tiles[xWidth][yHeight].yPos)
+    for(let x = 0; x < map.xWidth; x++){
+        for(let y = 0; y < map.yHeight; y++){
+            if(map.tiles[x][y].unit != null){
+                ctx.fillText(map.tiles[x][y].unit.symbol, x*40, y*40) //these coordinates are bogus rn. They need to be fine-tuned.
             }
         }
     }
