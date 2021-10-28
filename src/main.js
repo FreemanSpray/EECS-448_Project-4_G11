@@ -7,8 +7,10 @@ function initialize(){
     map = new Map()
     player1 = new Player(1)
     player2 = new Player(2)
+    drawUnits()
 }
 
+//the x values in all rounding functions assume you are playing with the console open and set to the right side of the screen. On offset must be applied to all x values if you are going to play without this setting.
 function canvasRounding(x, y){
     let section = 0
     if(x > 134 && x < 1535 && y > 8 && y < 608){

@@ -2,9 +2,14 @@ class Map{
     constructor(){
         this.xWidth = 45
         this.yHeight = 15
+        this.tiles = []
 
-        for (let y = 0; y < yHeight; y++){
-            for (let x = 0; x < xWidth; x++) {
+        for(let i = 0; i < this.xWidth; i++){
+            this.tiles[i] = []
+        }
+
+        for (let x = 0; x < this.xWidth; x++){
+            for (let y = 0; y < this.yHeight; y++) {
                 this.tiles[x][y] = new Tile(x, y)
             }
         }
@@ -22,10 +27,11 @@ class Tile{
 }
 
 class Unit{
-    constructor(symbol, description, actions, triggers){
+    constructor(symbol, description, actions, triggers, player){
         this.symbol = symbol
         this.description = description
         this.actions = actions
         this.triggers = triggers
+        this.player = player
     }
 }

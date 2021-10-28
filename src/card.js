@@ -11,7 +11,7 @@ class Card{
 
 class Hand{
     constructor(){
-        this.cards;
+        this.cards = []
         /*
         param: x_pos, y_pos
         pre: 
@@ -21,14 +21,14 @@ class Hand{
         This one is specifically for guard tower. 
 
         */
-        function function1(x_pos, y_pos)
+        function placeGuardTower(x_pos, y_pos, player)
         {
-            Guard_Tower = new Unit();   
-            Map.tiles[x_pos][y_pos].unit = Guard_Tower;
+            let Guard_Tower = new Unit("T", "Guard Tower", [], [], player);   
+            map.tiles[x_pos][y_pos].unit = Guard_Tower;
 
         }
-        action1 = new Action("Summon Guard Tower", 3, null, funtion1() );
-        this.cards[0] = new Card("GuardTower", "something", action1);
+        let actionPlaceGuardTower = new Action("Summon Guard Tower", 3, null, placeGuardTower(1, 1, 1)); //IMPORTANT: It turns out our code won't compile unless we put actual values inside here. Thoughts?
+        this.cards[0] = new Card("GuardTower", "something", actionPlaceGuardTower);
 
         
         /*
@@ -40,13 +40,13 @@ class Hand{
         This one is specifically for Knight. 
 
         */
-        function function2(x_pos, y_pos)
+        function placeKnight(x_pos, y_pos, player)
         {
-            Knight = new Unit();
-            Map.tiles[x_pos][y_pos].unit = Knight;
+            let Knight = new Unit("K", "Knight", [], [], player);
+            map.tiles[x_pos][y_pos].unit = Knight;
         }
-        action2 = new Action("Knight", 1, null, function2());
-        this.cards[1] = new Card("Knight", "something", action2);
+        let actionPlaceKnight = new Action("Knight", 1, null, placeKnight(1, 1, 1));
+        this.cards[1] = new Card("Knight", "something", actionPlaceKnight);
 
         
         /*
@@ -58,13 +58,13 @@ class Hand{
         This one is specifically for Assassin. 
 
         */
-        function function3(x_pos, y_pos)
+        function placeAssassin(x_pos, y_pos, player)
         {
-            Assassin = new Unit();
-            Map.tiles[x_pos][y_pos].unit = Assassin;
+            let Assassin = new Unit("A", "Assassin", [], [], player);
+            map.tiles[x_pos][y_pos].unit = Assassin;
         }
-        action3 = new Action("Assassin", 1, null, function3());
-        this.cards[2] = new Card("Assassin", "something", action3);
+        let actionPlaceAssassin = new Action("Assassin", 1, null, placeAssassin(1, 1, 1));
+        this.cards[2] = new Card("Assassin", "something", actionPlaceAssassin);
 
         
         /*
@@ -76,13 +76,13 @@ class Hand{
         This one is specifically for Wizard. 
 
         */
-        function function4(x_pos, y_pos)
+        function placeWizard(x_pos, y_pos, player)
         {
-            Wizard = new Unit();
-            Map.tiles[x_pos][y_pos].unit = Wizard;
+            let Wizard = new Unit("T", "Wizard", [], [], player);
+            map.tiles[x_pos][y_pos].unit = Wizard;
         }
-        action4 = new Action("Wizard", 1, null, function4());
-        this.cards[3] = new Card("Wizard", "something", action4);
+        let actionPlaceWizard = new Action("Wizard", 1, null, placeWizard(1, 1, 1));
+        this.cards[3] = new Card("Wizard", "something", actionPlaceWizard);
 
 
 
@@ -96,13 +96,13 @@ class Hand{
         This one is specifically for Ethereal Ward. 
 
         */
-        function function5(x_pos, y_pos)
+        function placeEtherealWard(x_pos, y_pos, player)
         {
-            Ethereal_Ward = new Trigger();
-            Map.tiles[x_pos][y_pos].unit.triggers.push(Ethereal_Ward);
+            let Ethereal_Ward = new Trigger();
+            map.tiles[x_pos][y_pos].unit.triggers.push(Ethereal_Ward);
         }
-        action5 = new Action("Placed Ethereal Ward", 1, null, function5() );
-        this.cards[4] = new Card("Ethereal Ward", "something", action5);
+        let actionPlaceEtherealWard = new Action("Placed Ethereal Ward", 1, null, placeEtherealWard(1, 1, 1) );
+        this.cards[4] = new Card("Ethereal Ward", "something", actionPlaceEtherealWard);
 
         
         /*
@@ -114,13 +114,13 @@ class Hand{
         This one is specifically for Magical Landmine. 
 
         */
-        function function6(x_pos, y_pos)
+        function placeMagicalLandmine(x_pos, y_pos, player)
         {
-            Magical_Landmine = new Trigger();
-            Map.tiles[x_pos][y_pos].unit.triggers.push(Magical_Landmine);
+            let Magical_Landmine = new Trigger();
+            map.tiles[x_pos][y_pos].unit.triggers.push(Magical_Landmine);
         }
-        action6 = new Action("Placed Magical Landmine", 1, null, function6());
-        this.cards[5] = new Card("Magical Landmine", "something", action6);
+        let actionPlaceMagicalLandmine = new Action("Placed Magical Landmine", 1, null, placeMagicalLandmine(1, 1, 1));
+        this.cards[5] = new Card("Magical Landmine", "something", actionPlaceMagicalLandmine);
 
         
         /*
@@ -132,13 +132,13 @@ class Hand{
         This one is specifically for Now You See Me. 
 
         */
-       function function7(x_pos, y_pos)
+       function castInvisibility(x_pos, y_pos, player)
        {
-        Now_You_See_Me = new Trigger();
-        Map.tiles[x_pos][y_pos].unit.triggers.push(Now_You_See_Me);
+        let Now_You_See_Me = new Trigger();
+        map.tiles[x_pos][y_pos].unit.triggers.push(Now_You_See_Me);
        }
-       action7 = new Action("Placed Now You See Me", 1, null, function7());
-       this.cards[6] = new Card("Now You See Me", "something", action7);
+       let actionCastInvisibility = new Action("Placed Now You See Me", 1, null, castInvisibility(1, 1, 1));
+       this.cards[6] = new Card("Now You See Me", "something", actionCastInvisibility);
 
 
         
@@ -155,20 +155,3 @@ class Deck{
         }
     }
 }
-
-class Action{
-    constructor(name, range, flags, function1){
-        this.name = name;
-        this.range = range;
-        this.flags = flags; 
-        this.function1 = function1;  
-
-        functions()
-        {
-
-        }
-
-
-    }
-}
-
