@@ -15,6 +15,14 @@ class Flag{
     }
 }
 
+function baseMove(){    //placeholder for commander movement function
+
+}
+
+function baseAttack(){    //placeholder for commander attack function
+
+}
+
 function range_radialRange(radius){       //pass in the desired radius and the range function for a radial range will be returned
     function range(source){
         const width = map.xWidth, height = map.yHeight;
