@@ -66,6 +66,22 @@ function validTarget_unoccupied(){      //returns a validTarget function where t
     return validTarget
 }
 
+function validTarget_inRange(){      //returns a validTarget function where the conditions are target is in range and does not contain a unit
+    function validTarget(source, range, target){
+        let valid = false
+        let arr = range(source)
+
+        let targetInRange = arr[target.xPos][target.yPos]
+        if (targetInRange) {
+            valid = true
+        }
+
+        return valid
+    }
+
+    return validTarget
+}
+
 function validTarget_unit(){      //returns a validTarget function where the conditions are target is in range and contains a unit
     function validTarget(source, range, target){
         let valid = false
@@ -202,6 +218,37 @@ function action_summonKnight(){
     return action
 }
 
+function action_summonWizard(){
+    let name = "Summon Wizard"
+    
+    let range = range_radialRange(1)
+    let validTarget = validTarget_unoccupied()
+
+    let flags = []
+    let flagID1 = "UNIT_ETB"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true //relevant tiles is just the target tile
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    function actionFunction(source, target){
+        let unit = unit_wizard()
+        map.tiles[target.xPos][target.yPos].unit = unit
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
 function action_knightMove(){
     let name = "Move"
     
@@ -290,6 +337,96 @@ function action_knightCharge(){
     }
     flags[1] = new Flag(flagID2, relevantTiles2)
 
+    function actionFunction(source, target){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function action_wizardMove(){
+    let name = "Move"
+    
+    let range = range_radialRange(1)
+    let validTarget = validTarget_unoccupied()
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    function actionFunction(source, target){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function action_wizardTeleport(){
+    let name = "Teleport"
+    
+    let range = range_radialRange(30) 
+    let validTarget = validTarget_unoccupied() //need to define a unique function for this that prevents the wizard from teleporting too close to an enemy unit (within the action itself)
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    function actionFunction(source, target){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function action_wizardFireball(){
+    let name = "Fireball"
+    
+    let range = range_radialRange(15)
+    let validTarget = validTarget_inRange()
+    let flags = []
+    let flagID1 = "UNIT_BLOWUPTILE"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
     function actionFunction(source, target){
         target.unit = source.unit
         source.unit = null
