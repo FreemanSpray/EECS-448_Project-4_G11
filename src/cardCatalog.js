@@ -7,7 +7,7 @@ class Card{
 }
 
 /*
-function card_template(){
+function card_template(playerID){
     let name = ""
     let description = ""
 
@@ -23,20 +23,20 @@ function card_template(){
 
 
 // DONE
-function card_guardTower(){
+function card_guardTower(playerID){
     let name = "Guard Tower"
     let description = "Unmoving, defends a nearby area"
-    let action = action_summonGuardTower()
+    let action = action_summonGuardTower(playerID)
 
     let card = new Card(name, description, action)
     return card
 }
 
-function card_knight(){
+function card_knight(playerID){
     let name = "Knight"
     let description = "Charges headfirst into the fray"
 
-    let action = action_summonKnight()
+    let action = action_summonKnight(playerID)
 
     let card = new Card(name, description, action)
     return card

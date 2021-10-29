@@ -1,7 +1,8 @@
 class Trigger{
-    constructor(flagID, triggeredFunction){
+    constructor(flagID, triggeredFunction, playerID){
         this.flagID = flagID
         this.function = triggeredFunction
+        this.playerID = playerID
     }
 }
 

@@ -6,6 +6,11 @@ Refactoring goals:
 		because movement is just deleting the unit from the source tile and creating
 		a copy at the target tile. 
 
+	A lot of information is needing to be passed down in an unintuitive way. e.g. playerID
+		is passed into hand constructor > passed into card constructors > passed into
+		action constructor > passed into unit constructor, so that a unit can know who
+		owns it
+
 
 Need to put guards on all ranges/relevent so that trying to access tiles outside the map doesn't
 	cause an error

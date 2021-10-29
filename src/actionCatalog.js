@@ -143,11 +143,11 @@ function action_summonGuardTower(){
     }
     flags[0] = new Flag(flagID1, relevantTiles1)
     
-    function actionFunction(source, target){
-        let Guard_Tower = unit_guardTower()
+    function actionFunction(source, target, playerID){
+        let Guard_Tower = unit_guardTower(playerID)
         target.unit = Guard_Tower;      //sets target tile's unit to a guardTower
 
-        defended = trigger_defended
+        let defended = trigger_defended()
         let defendedRadius = 2
         for (let x = -defendedRadius; x < defendedRadius; x++) {
             for (let y = -defendedRadius; y < defendedRadius; y++) {

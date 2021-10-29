@@ -25,13 +25,3 @@ class Tile{
         this.unit = null
     }
 }
-
-class Unit{
-    constructor(symbol, description, actions, triggers, player){
-        this.symbol = symbol
-        this.description = description
-        this.actions = actions
-        this.triggers = triggers
-        this.player = player
-    }
-}
