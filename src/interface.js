@@ -46,10 +46,14 @@ function drawCards() {
 }
 
 function drawUnits() {
+    canvas = document.getElementById("board")
+    ctx = canvas.getContext("2d");
+    ctx.font = "30pt Calibri"
     for(let x = 0; x < map.xWidth; x++){
         for(let y = 0; y < map.yHeight; y++){
             if(map.tiles[x][y].unit != null){
-                ctx.fillText(map.tiles[x][y].unit.symbol, x*40, y*40) //draws the symbol for the unit. Note that these coordinates are bogus at the moment. They need to be fine-tuned.
+                ctx.fillText(map.tiles[x][y].unit.symbol, Math.floor(3 + x*40), Math.floor(33 + y*40)) //draws the symbol for the unit. Note that these coordinates are bogus at the moment. They need to be fine-tuned.
+                console.log("unit " + map.tiles[x][y].unit.symbol + " drawn at (" + Math.floor(3 + x*40) + ", " + Math.floor(33 + y*40) + ") = tile (" + x + ", " + y + ")")
             }
         }
     }

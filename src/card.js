@@ -78,7 +78,7 @@ class Hand{
         */
         function placeWizard(x_pos, y_pos, player)
         {
-            let Wizard = new Unit("T", "Wizard", [], [], player);
+            let Wizard = new Unit("W", "Wizard", [], [], player);
             map.tiles[x_pos][y_pos].unit = Wizard;
         }
         let actionPlaceWizard = new Action("Wizard", 1, null, placeWizard(1, 1, 1));
