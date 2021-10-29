@@ -39,6 +39,7 @@ class Hand{
 
         */
 
+
         
         /*
         param: x_pos, y_pos
@@ -49,7 +50,6 @@ class Hand{
         This one is specifically for Wizard. 
 
         */
-
 
 
         
@@ -64,6 +64,7 @@ class Hand{
         */
 
         
+
         /*
         param: x_pos, y_pos
         pre: 
@@ -74,6 +75,7 @@ class Hand{
 
         */
 
+        
         
         /*
         param: x_pos, y_pos
