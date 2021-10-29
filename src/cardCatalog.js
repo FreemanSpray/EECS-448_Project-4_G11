@@ -21,6 +21,8 @@ function card_template(){
 
 // DOING
 
+
+// DONE
 function card_guardTower(){
     let name = "Guard Tower"
     let description = "Unmoving, defends a nearby area"
@@ -30,19 +32,18 @@ function card_guardTower(){
     return card
 }
 
+function card_knight(){
+    let name = "Knight"
+    let description = "Charges headfirst into the fray"
 
-// DONE
+    let action = action_summonKnight()
+
+    let card = new Card(name, description, action)
+    return card
+}
 
 // TO DO
-function knightCard(){
-    function function2(x_pos, y_pos)
-    {
-        Knight = new Unit();
-        Map.tiles[x_pos][y_pos].unit = Knight;
-    }
-    action2 = new Action("Summon Knight", 1, null, function2());
-    this.cards[1] = new Card("Knight", "something", action2);
-}
+
 
 function assassinCard(){
     function function3(x_pos, y_pos)

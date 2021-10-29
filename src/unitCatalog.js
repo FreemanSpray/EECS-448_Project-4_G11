@@ -9,63 +9,40 @@ class Unit{
 
 /*
 function unit_template(){
-    description = "Unit description goes here"
+    let symbol = ""
+    let description = "Unit description goes here"
 
     let actions = []
 
-    function range1(target){
-
-    }
-    function validTarget1(target){
-
-    }
-    function flags1(){
-
-    }
-    function action1(target){
-
-    }
-    actions[0] = new Action("actionName", range1, validTarget1, flags1, action1)
-
-    function range2(target){
-
-    }
-    function validTarget2(target){
-
-    }
-    function flags2(){
-
-    }
-    function action2(target){
-
-    }
-    actions[1] = new Action("actionName", range2, validTarget2, flags2, action2)
-
     let triggers = []
-    let flagID1 = ""
-    function trigger1(target){
 
-    }
-    triggers[] = new Trigger(flagID1, trigger1)
-    let flagID2 = ""
-    function trigger2(target){
-
-    }
-    triggers[1] = new Trigger(flagID2, trigger2)
-
-    unit = new Unit(symbol, description, actions, triggers)    
+    let unit = new Unit(symbol, description, actions, triggers)    
     return unit
 }
 */
 
 function unit_guardTower(){
-    symbol = "GT"
-    description = "Defends an area within 2 tiles"
+    let symbol = "GT"
+    let description = "Our enemies , though it won't do them any good"
 
     let actions = []
 
     let triggers = []
 
-    unit = new Unit(symbol, description, actions, triggers)
+    let unit = new Unit(symbol, description, actions, triggers)
     return unit 
+}
+
+function unit_knight(){
+    let symbol = "Kn"
+    let description = "There is fire in his eyes, and his steed paws at the dirt readily"
+
+    let actions = []
+    actions[0] = action_knightMove()
+    actions[1] = action_knightCharge()
+
+    let triggers = []
+
+    let unit = new Unit(symbol, description, actions, triggers)    
+    return unit
 }

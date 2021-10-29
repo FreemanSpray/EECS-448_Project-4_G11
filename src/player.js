@@ -1,6 +1,6 @@
 class Player{
     constructor(playerID){
-         this.playerID = playerID
+        this.playerID = playerID
 
         let commanderMove = new Action("Move Commander", 1, null, baseMove())
         let commanderAttack = new Action("Attack with Commander", 1, null, baseAttack())

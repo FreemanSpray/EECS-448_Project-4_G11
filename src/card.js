@@ -2,6 +2,9 @@
 class Hand{
     constructor(){
         this.cards = []
+
+        this.cards[0] = card_guardTower()
+        this.cards[1] = card_knight()
         /*
         param: x_pos, y_pos
         pre: 
@@ -67,7 +70,7 @@ class Hand{
         post: initializes card action 
         
         This function will initiliaze the card and the action related to it. 
-        This one is specifically for Magical Landmine. 
+        This one is specifically for Magical Landmine.
 
         */
 

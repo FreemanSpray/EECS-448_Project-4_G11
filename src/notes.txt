@@ -1,0 +1,11 @@
+Refactoring goals:
+	current system of actions and triggers does not allow any action or triggered action
+		to be prevented by anything else
+
+	movement actions require source tile to be passed in as well as target tile. this is
+		because movement is just deleting the unit from the source tile and creating
+		a copy at the target tile. 
+
+
+Need to put guards on all ranges/relevent so that trying to access tiles outside the map doesn't
+	cause an error

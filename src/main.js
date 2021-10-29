@@ -50,7 +50,7 @@ let target
 function clickProcessing(x, y){
     canvasSection = canvasRounding(x, y)        //check to see which section of the canvas the click has occurred in
     if(canvasSection == 1){
-        target = tileRounding(x, y)
+        target = tileRounding(x, y)     //check which tile was clicked
         if(actionSelected == null){       //if there is no action currently selected, select the tile and the unit on the tile
             tileSelected = target
             if(target.unit != null){                //checking if there is a unit on the tile
