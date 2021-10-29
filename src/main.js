@@ -13,13 +13,13 @@ function initialize(){
 //the x values in all rounding functions assume you are playing with the console open and set to the right side of the screen. On offset must be applied to all x values if you are going to play without this setting.
 function canvasRounding(x, y){
     let section = 0
-    if(x > 134 && x < 1535 && y > 8 && y < 608){
+    if(x > 8 && x < 1408 && y > 8 && y < 608){
         section = 1
     }
-    else if(x > 134 && x < 1035 && y > 626 && y < 827){
+    else if(x > 8 && x < 909 && y > 626 && y < 827){
         section = 2
     }
-    else if(x > 1045 && x < 1535 && y > 626 && y < 827){
+    else if(x > 914 && x < 1408 && y > 626 && y < 827){
         section = 3
     }
     console.log(section)
@@ -28,7 +28,7 @@ function canvasRounding(x, y){
 
 //this needs to return a tile
 function tileRounding(x, y){
-    roundedXCoordinate = Math.floor((x - 134)/40)
+    roundedXCoordinate = Math.floor((x - 8)/40)
     roundedYCoordinate = Math.floor((y - 8)/40)
     console.log([roundedXCoordinate, roundedYCoordinate])
     return(map.tiles[roundedXCoordinate][roundedYCoordinate])
