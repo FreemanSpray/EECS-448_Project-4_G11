@@ -1,11 +1,17 @@
 class Action{
-    constructor(){
+    constructor(name, range, validTarget, flags, actionFunction){
 
     }
 }
 
 class Trigger{
-    constructor(){
+    constructor(flagID, triggeredFunction){
 
+    }
+}
+
+class Flag{
+    constructor(flagID, relevantTiles){
+        
     }
 }
