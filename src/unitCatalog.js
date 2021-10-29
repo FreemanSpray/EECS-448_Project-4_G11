@@ -48,3 +48,18 @@ function unit_knight(playerID){
     let unit = new Unit(symbol, description, actions, triggers, playerID)    
     return unit
 }
+
+function unit_wizard(playerID){
+    let symbol = "W"
+    let description = "She can turn a battalion to a bonefire with a flick of the wrist, though the reverse requires a bit more nuance"
+
+    let actions = []
+    actions[0] = action_wizardMove()
+    actions[1] = action_wizardTeleport()
+    actions[2] = action_wizardFireball()
+
+    let triggers = []
+
+    let unit = new Unit(symbol, description, actions, triggers, playerID)    
+    return unit
+}
