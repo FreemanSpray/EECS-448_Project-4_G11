@@ -36,7 +36,50 @@ function tileRounding(x, y){
 
 //this needs to return a card
 function cardRounding(x, y){
+    //all cards [647 < y < 797]
+    //card 1 [88 < x < 188]
+    //card 2 [244 < x < 344]
+    //card 3 [400 < x < 500]
+    //card 4 [556 < x < 656]
+    //card 5 [712 < x < 812]
 
+    let cardNum = null
+
+    if (y >= 647 && y <= 797) {                 //test y coord of click
+        if (x >= 88 && x <= 188) {              //test x coord of click
+            cardNum = 0                         //set cardNum to array value of card clicked
+        }
+        else if (x >= 244 && x <= 344){
+            cardNum = 1
+        }
+        else if (x >= 400 && x <= 500){
+            cardNum = 2
+        }
+        else if (x >= 556 && x <= 656){
+            cardNum = 3
+        }
+        else if (x >= 712 && x <= 812){
+            cardNum = 4
+        }
+    }
+    console.log("cardNum = ", cardNum)
+    
+    let card = null
+    if (turn == 1) {                             //check who's turn it is
+        try {
+            card = player1.hand.cards[cardNum]   //try to set card to the card clicked
+        } catch (error) {
+            console.log(error)                   //if an empty card is clicked, log error
+        }
+    } else if (turn == 2) {
+        try {
+            card = player2.hand.cards[cardNum]
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    console.log("card = ", card)
+    return card
 }
 
 //this needs to return an action
@@ -48,10 +91,10 @@ let canvasSection
 let target
 
 function clickProcessing(x, y){
-    canvasSection = canvasRounding(x, y)        //check to see which section of the canvas the click has occurred in
-    if(canvasSection == 1){
-        target = tileRounding(x, y)     //check which tile was clicked
-        if(actionSelected == null){       //if there is no action currently selected, select the tile and the unit on the tile
+    canvasSection = canvasRounding(x, y)            //check to see which section of the canvas the click has occurred in
+    if(canvasSection == 1){                         //map area has been clicked
+        target = tileRounding(x, y)                 //check which tile was clicked
+        if(actionSelected == null){                 //if there is no action currently selected, select the tile and the unit on the tile
             tileSelected = target
             if(target.unit != null){                //checking if there is a unit on the tile
                 unitSelected = target.unit
@@ -63,8 +106,11 @@ function clickProcessing(x, y){
             }
         }
     }
-    else if(canvasSection == 2){
-        target = cardRounding(x, y)
+    else if(canvasSection == 2){                    //if the card area has been clicked
+        cardSelected = cardRounding(x, y)           //see which card was clicked
+        if (cardSelected != null) {
+            actionSelected = cardSelected.action    //if a valid card was selected, update actionSelected
+        }
     }
     else {
         target = actionRounding(x, y)

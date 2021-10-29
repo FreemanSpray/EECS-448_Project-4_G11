@@ -30,7 +30,7 @@
 			Teleports anywhere not within x tiles of enemy unit, uses a charge
 
 	Abilities: Starts with x charges. When all charges are consumed, the unit dies
-			Fireball, target tile within range x, destroys each unit in a x radius from target tile, uses 				a charge
+			Fireball, target tile within range x, destroys each unit in a x radius from target tile, uses a charge
 			Mysterious Fog Bank, x tiles in a line are defended for x turns, uses a charge
 			
 
