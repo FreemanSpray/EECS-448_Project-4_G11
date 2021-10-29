@@ -87,6 +87,27 @@ function validTarget_unit(){      //returns a validTarget function where the con
     return validTarget
 }
 
+function validTarget_enemyUnit(){      //returns a validTarget function where the conditions are target is in range and contains a unit
+    function validTarget(source, range, target){
+        let valid = false
+        let arr = range(source)
+
+        let targetInRange = arr[target.xPos][target.yPos]
+        let targetOccupied = false
+        if (target.unit != null) {
+            targetOccupied = true
+        }
+
+        if (targetInRange && targetOccupied) {
+            valid = true
+        }
+
+        return valid
+    }
+
+    return validTarget
+}
+
 /*
 function action_template(){
     let name = ""
@@ -119,7 +140,7 @@ function action_template(){
         return arr
     }
     flags[0] = new Flag(flagID1, relevantTiles1)
-    function actionFunction(source, target){
+    function actionFunction(source, target, playerID){
 
     }
 
@@ -193,7 +214,7 @@ function action_summonKnight(){
         return arr
     }
     flags[0] = new Flag(flagID1, relevantTiles1)
-    function actionFunction(source, target){
+    function actionFunction(source, target, playerID){
         let unit = unit_knight()
         map.tiles[target.xPos][target.yPos].unit = unit
     }
@@ -223,7 +244,7 @@ function action_knightMove(){
         return arr
     }
     flags[0] = new Flag(flagID1, relevantTiles1)
-    function actionFunction(source, target){
+    function actionFunction(source, target, playerID){
         target.unit = source.unit
         source.unit = null
     }
@@ -290,9 +311,27 @@ function action_knightCharge(){
     }
     flags[1] = new Flag(flagID2, relevantTiles2)
 
-    function actionFunction(source, target){
+    function actionFunction(source, target, playerID){
         target.unit = source.unit
         source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function action_placeMagicalLandmine(){
+    let name = "Place Magical Landmine"
+    
+    let range = range_radialRange(10)
+    let validTarget = validTarget_inRange()
+
+    let flags = []
+    
+    function actionFunction(source, target, playerID){
+        let landMine = trigger_magicalLandmine(playerID) // CHECK THIS OUT
+
+        target.triggers.push(landmine)
     }
 
     let action = new Action(name, range, validTarget, flags, actionFunction)

@@ -7,30 +7,33 @@ class Trigger{
 }
 
 /*
-function trigger_template(){
+function trigger_template(playerID){
     let flagID = ""
 
     function triggeredFunction(target){
 
     }
 
-    let trigger = new Trigger(flagID, triggeredFunction)
+    let trigger = new Trigger(flagID, triggeredFunction, playerID)
     return trigger
 }
 */
 
-function trigger_defended(){
+function trigger_defended(playerID){
     let flagID = "UNIT_MOVETOTILE"
 
     function triggeredFunction(target){
-        target.unit = null
+        const player = playerID
+        if (target.unit.playerID != player) {
+            target.unit = null
+        }
     }
 
     let trigger = new Trigger(flagID, triggeredFunction)
     return trigger
 }
 
-function trigger_guardTowerDestroyed(){
+function trigger_guardTowerDestroyed(playerID){
     let flagID = "UNIT_DESTROYED"       //when a guard tower unit is destroyed
 
     function triggeredFunction(target){
@@ -46,5 +49,22 @@ function trigger_guardTowerDestroyed(){
     }
 
     let trigger = new Trigger(flagID, triggeredFunction)
+    return trigger
+}
+
+function trigger_magicalLandmine(playerID){
+    let flagID = "UNIT_MOVETOTILE"
+
+    function triggeredFunction(target){
+        const blastRadius = 4
+
+        for (let x = -blastRadius; x < blastRadius; x++){
+            for (let y = -blastRadius; y < blastRadius; y++) {
+                map.tiles[target.xPos + x][target.yPos + y].unit = null
+            }
+        }
+    }
+
+    let trigger = new Trigger(flagID, triggeredFunction, playerID)
     return trigger
 }

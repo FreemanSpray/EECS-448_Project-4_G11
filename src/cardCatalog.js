@@ -7,7 +7,7 @@ class Card{
 }
 
 /*
-function card_template(playerID){
+function card_template(){
     let name = ""
     let description = ""
 
@@ -20,23 +20,42 @@ function card_template(playerID){
 
 
 // DOING
+function magicalLandmineCard(){
+    function function6(x_pos, y_pos)
+    {
+        Magical_Landmine = new Trigger();
+        Map.tiles[x_pos][y_pos].unit.triggers.push(Magical_Landmine);
+    }
+    action6 = new Action("Placed Magical Landmine", 1, null, function6());
+    this.cards[5] = new Card("Magical Landmine", "something", action6);
 
+}
 
-// DONE
-function card_guardTower(playerID){
-    let name = "Guard Tower"
-    let description = "Unmoving, defends a nearby area"
-    let action = action_summonGuardTower(playerID)
+function card_magicalLandmine(){
+    let name = "Magical Landmine"
+    let description = "Watch your step..."
+
+    let action = action_placeMagicalLandmine()
 
     let card = new Card(name, description, action)
     return card
 }
 
-function card_knight(playerID){
+// DONE
+function card_guardTower(){
+    let name = "Guard Tower"
+    let description = "Unmoving, defends a nearby area"
+    let action = action_summonGuardTower()
+
+    let card = new Card(name, description, action)
+    return card
+}
+
+function card_knight(){
     let name = "Knight"
     let description = "Charges headfirst into the fray"
 
-    let action = action_summonKnight(playerID)
+    let action = action_summonKnight()
 
     let card = new Card(name, description, action)
     return card
@@ -76,16 +95,7 @@ function etherealWardCard(){
 
 }
 
-function magicalLandmineCard(){
-    function function6(x_pos, y_pos)
-    {
-        Magical_Landmine = new Trigger();
-        Map.tiles[x_pos][y_pos].unit.triggers.push(Magical_Landmine);
-    }
-    action6 = new Action("Placed Magical Landmine", 1, null, function6());
-    this.cards[5] = new Card("Magical Landmine", "something", action6);
 
-}
 
 function nowYouSeeMeCard(){
     function function7(x_pos, y_pos)
