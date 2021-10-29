@@ -4,12 +4,6 @@ class Tile{
     }
 }
 
-class Unit{
-    constructor(){
-
-    }
-}
-
 class Map{
     constructor(){
 

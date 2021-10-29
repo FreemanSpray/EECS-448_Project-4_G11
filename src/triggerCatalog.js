@@ -1,3 +1,10 @@
+class Trigger{
+    constructor(flagID, triggeredFunction){
+        this.flagID = flagID
+        this.function = triggeredFunction
+    }
+}
+
 /*
 function trigger_template(){
     let flagID = ""

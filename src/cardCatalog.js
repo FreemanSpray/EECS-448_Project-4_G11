@@ -1,44 +1,9 @@
-function range_radialRange(radius){       //pass in the desired radius and the range function for a radial range will be returned
-    function range(source){
-        const width = map.xWidth, height = map.yHeight;
-        const initialVal = false;
-
-        var arr = Array(width);
-        for (var x = 0; x < width; x++) {
-            arr[x] = Array(height).fill(initialVal);
-        }
-
-        const radiusFromCast = radius
-        for (let x = -radiusFromCast; x < radiusFromCast; x++) {
-            for (let y = -radiusFromCast; y < radiusFromCast; y++) {
-                arr[source.xPos + x][source.yPos + y] = true
-            }            
-        }
-        return arr
+class Card{
+    constructor(name, description, action){
+        this.name = name;
+        this.description = description;
+        this.action = action;
     }
-
-    return range
-}
-
-function validTarget_unoccupied(){      //returns a validTarget function where the conditions are target is in range and does not contain a unit
-    function validTarget(source, range, target){
-        let valid = false
-        let arr = range(source)
-
-        let targetInRange = arr[target.xPos][target.yPos]
-        let targetUnoccupied = false
-        if (target.unit == null) {
-            targetUnoccupied = true
-        }
-
-        if (targetInRange && targetUnoccupied) {
-            valid = true
-        }
-
-        return valid
-    }
-
-    return validTarget
 }
 
 /*

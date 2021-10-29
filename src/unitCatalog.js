@@ -1,3 +1,12 @@
+class Unit{
+    constructor(symbol, description, actions, triggers){
+        this.symbol = symbol
+        this.description = description
+        this.actions = actions
+        this.triggers = triggers
+    }
+}
+
 /*
 function unit_template(){
     description = "Unit description goes here"

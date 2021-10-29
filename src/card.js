@@ -1,10 +1,3 @@
-class Card{
-    constructor(name, description, action){
-        this.name = name;
-        this.description = description;
-        this.action = action;
-    }
-}
 
 class Hand{
     constructor(){
@@ -103,15 +96,5 @@ class Deck{
         {
 
         }
-    }
-}
-
-class Action{
-    constructor(name, range, validTarget, flags, Function){
-        this.name = name;
-        this.range = range;
-        this.validTarget = validTarget;
-        this.flags = flags; 
-        this.function = Function;  
     }
 }
