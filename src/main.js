@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initialize()
 });
 
+/*   
+    pre: called only when DOM content has loaded.
+    post: constructs a map and two players, draws board and commanders.
+*/
 function initialize(){
     drawTemplate()
     map = new Map()
@@ -10,7 +14,10 @@ function initialize(){
     drawUnits()
 }
 
-//the x values in all rounding functions assume you are playing with the console open and set to the right side of the screen. On offset must be applied to all x values if you are going to play without this setting.
+/*   
+    param: x and y, the x and y coordinates of a click on the screen
+    post: returns a value representing which canvas (board, cards, or actions) x and y correspond to.
+*/
 function canvasRounding(x, y){
     let section = 0
     if(x > 8 && x < 1408 && y > 8 && y < 608){
@@ -26,7 +33,11 @@ function canvasRounding(x, y){
     return(section)
 }
 
-//this needs to return a tile
+/*   
+    param: x and y, the x and y coordinates of a click on the screen
+    pre: assumes x and y correspond to the board canvas
+    post: returns the tile that x and y correspond to.
+*/
 function tileRounding(x, y){
     roundedXCoordinate = Math.floor((x - 8)/40)
     roundedYCoordinate = Math.floor((y - 8)/40)
@@ -34,7 +45,11 @@ function tileRounding(x, y){
     return(map.tiles[roundedXCoordinate][roundedYCoordinate])
 }
 
-//this needs to return a card
+/*   
+    param: x and y, the x and y coordinates of a click on the screen
+    pre: assumes x and y correspond to the cards canvas
+    post: returns the card that x and y correspond to.
+*/
 function cardRounding(x, y){
     //all cards [647 < y < 797]
     //card 1 [88 < x < 188]
@@ -82,7 +97,11 @@ function cardRounding(x, y){
     return card
 }
 
-//this needs to return an action
+/*   
+    param: x and y, the x and y coordinates of a click on the screen
+    pre: assumes x and y correspond to the actions canvas
+    post: returns the action that x and y correspond to.
+*/
 function actionRounding(x, y){
     //all actions [1003 < x < 1306]
     //action 1 [650 < y < 683]
@@ -95,22 +114,26 @@ function actionRounding(x, y){
         for(let i = 0; i < 3; i++){
             if(y > 650 + 60*i && y < 683 + 60*i){
                 actionNum = i + 1
-                if(unitSelected != null){
-                    action = unitSelected.actions[i]
+                if(unitSelected != null){                       //check whether there is currently a unit selected
+                    action = unitSelected.actions[i]            //if so, set action to the action that has been clicked
+                    console.log("actionNum = " + actionNum)
+                    console.log("action = " + action.name)
                 }
             }
         }
     }
-    console.log("actionNum = " + actionNum)
-    console.log("action = " + action.name )
     return(action)
 
 }
 
-let canvasSection
-let target
-
+/*   
+    param: x and y, the x and y coordinates of a click on the screen
+    pre: called only when a click has been registered by the click event listener.
+    post: determines what section of the board has been clicked, checks gamestate variables if applicable, then performs the appropriate functionality.
+*/
 function clickProcessing(x, y){
+    let canvasSection
+    let target
     canvasSection = canvasRounding(x, y)            //check to see which section of the canvas the click has occurred in
     if(canvasSection == 1){                         //map area has been clicked
         target = tileRounding(x, y)                 //check which tile was clicked

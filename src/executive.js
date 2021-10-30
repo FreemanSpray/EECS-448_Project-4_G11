@@ -1,3 +1,6 @@
+/*
+    post: resets gamestate variables to null and passes the turn to player 2.
+*/
 function passTurn(){
     tileSelected = null
     unitSelected = null
@@ -6,6 +9,11 @@ function passTurn(){
     turn = (turn % 2) + 1
 }
 
+/*
+    param: tile, a tile in the map; and flag, a flagID.
+    pre: called only when the tile in question is a relevant tile for flag.
+    post: for all triggers belonging to tile, compares flag to that trigger's flagID. If there is a match, it executes that trigger's function.
+*/
 function executeTileTriggers(tile, flag){
     for(let i = 0; i < tile.triggers.length; i++){
         if(tile.triggers[i].flagID == flag){
@@ -14,6 +22,11 @@ function executeTileTriggers(tile, flag){
     }
 }
 
+/*
+    param: tile, a tile in the map; and flag, a flagID.
+    pre: called only when the tile in question is a relevant tile for flag, and when there is a unit on that tile.
+    post: for all triggers belonging to the unit located on tile, compares flag to that trigger's flagID. If there is a match, it executes that trigger's function.
+*/
 function executeUnitTriggers(tile, flag){
     for(let i = 0; i < tile.unit.triggers.length; i++){
         if(tile.unit.triggers[i].flagID == flag){
@@ -22,11 +35,15 @@ function executeUnitTriggers(tile, flag){
     }
 }
 
-let flags = []
-
+/*
+    param: target, the action to be executed.
+    pre: called only when actionSelected is set to an action (not null)
+    post: Executes target. Then for each flag associated with target, this function executes triggers of relevant tiles and any units on relevant tiles.
+*/
 function executeAction(target){
     action.function(target)                     //carry out the action
 
+    let flags = []
     flags = action.Flags
     for(let flag = 0; flag < flags.size; flag++){        
         let flagID = flags[flag].ID                            //defining flagID to be the identifier for the flag we are currently looking at

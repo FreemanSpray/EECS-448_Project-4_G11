@@ -1,6 +1,10 @@
 let canvas
 let context
 
+ /* 
+    pre: assumes initialization has just been completed. 
+    post: draws board, cards, and actions.
+*/
 function drawTemplate() {
 
     drawBoard();
@@ -10,6 +14,9 @@ function drawTemplate() {
 
 }
 
+/*   
+    post: draws the board
+*/
 function drawBoard() {
     // draw board
     canvas = document.getElementById("board");
@@ -31,6 +38,9 @@ function drawBoard() {
     }
 }
 
+/*   
+    post: draws five spaces for cards to be drawn (at this point in implementation, does not have the functionality for drawing the cards themselves)
+*/
 function drawCards() {
     //draw cards
     canvas = document.getElementById("cards");
@@ -46,6 +56,10 @@ function drawCards() {
     }
 }
 
+
+/*   
+    post: draws the symbols all units in the appropriate tiles.
+*/
 function drawUnits() {
     canvas = document.getElementById("board")
     ctx = canvas.getContext("2d");
@@ -64,6 +78,10 @@ function drawUnits() {
     }
 }
 
+
+/*   
+    post: draws three action buttons. If a unit is selected, will name these buttons after the actions available to that unit.
+*/
 function drawActions() {
     canvas = document.getElementById("actions");
     ctx = canvas.getContext("2d");
