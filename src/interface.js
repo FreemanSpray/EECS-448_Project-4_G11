@@ -5,6 +5,7 @@ function drawTemplate() {
 
     drawBoard();
     drawCards();
+    drawActions();
 
 
 }
@@ -56,13 +57,32 @@ function drawUnits() {
                 let xCoord = Math.floor(3 + x*40)
                 let yCoord = Math.floor(33 + y*40)
                 let maxWidth = 35
-                ctx.fillText(symbol, xCoord, yCoord, maxWidth)            //draws the symbol for the unit. Note that these coordinates are bogus at the moment. They need to be fine-tuned.
+                ctx.fillText(symbol, xCoord, yCoord, maxWidth)      //drawing symbol for the unit
                 console.log("unit " + symbol + " drawn at (" + xCoord + ", " + yCoord + ") = tile (" + x + ", " + y + ")")
             }
         }
     }
 }
 
+function drawActions() {
+    canvas = document.getElementById("actions");
+    ctx = canvas.getContext("2d");
+    ctx.font = "21pt Impact"
+    ctx.beginPath();
+    ctx.lineWidth = "3";
+    ctx.strokeStyle = "black";
+
+    for (let i = 0; i < 3; i++) {
+        yCoord = 60*i
+        ctx.rect(90, 25 + yCoord, 300, 30);
+        ctx.stroke();
+        if(unitSelected != null){
+            if(unitSelected.actions[i] != null){
+                ctx.fillText(unitSelected.actions[i].name, 95, 50 + yCoord, 90)
+            }
+        }
+    }
+}
 
 
 function drawSelectedInfo() {

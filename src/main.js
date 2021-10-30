@@ -84,6 +84,26 @@ function cardRounding(x, y){
 
 //this needs to return an action
 function actionRounding(x, y){
+    //all actions [1003 < x < 1306]
+    //action 1 [650 < y < 683]
+    //action 2 [710 < y < 343]
+    //action 3 [770 < y < 803]
+
+    let actionNum = null
+    let action = null
+    if(x > 1003 && x < 1306){
+        for(let i = 0; i < 3; i++){
+            if(y > 650 + 60*i && y < 683 + 60*i){
+                actionNum = i + 1
+                if(unitSelected != null){
+                    action = unitSelected.actions[i]
+                }
+            }
+        }
+    }
+    console.log("actionNum = " + actionNum)
+    console.log("action = " + action.name )
+    return(action)
 
 }
 
@@ -103,8 +123,10 @@ function clickProcessing(x, y){
         else {
             if(action.validTarget(target)){
                 executeAction(target)               //if there is an action currently selected, and if the selected tile is valid for that action, execute the action.
+                drawUnits()                         //update board to show the outcome of the executed action
             }
         }
+    drawActions()                                   //update board to show the actions associated with the selected unit
     }
     else if(canvasSection == 2){                    //if the card area has been clicked
         cardSelected = cardRounding(x, y)           //see which card was clicked
@@ -112,8 +134,8 @@ function clickProcessing(x, y){
             actionSelected = cardSelected.action    //if a valid card was selected, update actionSelected
         }
     }
-    else {
-        target = actionRounding(x, y)
+    else if(canvasSection == 3){
+        actionSelected = actionRounding(x, y)
     }
     
 }
