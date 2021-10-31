@@ -15,6 +15,7 @@ function passTurn(){
     post: for all triggers belonging to tile, compares flag to that trigger's flagID. If there is a match, it executes that trigger's function.
 */
 function executeTileTriggers(tile, flag){
+    console.log("looking at tile triggers")
     for(let i = 0; i < tile.triggers.length; i++){
         if(tile.triggers[i].flagID == flag){
             tile.triggers[i].function(tile)
@@ -41,13 +42,12 @@ function executeUnitTriggers(tile, flag){
     post: Executes target. Then for each flag associated with target, this function executes triggers of relevant tiles and any units on relevant tiles.
 */
 function executeAction(target){
-    console.log(actionSelected)
     actionSelected.function(tileSelected, target, turn)                     //carry out the action
 
-    let flags = []
-    flags = actionSelected.flags
-    for(let flag = 0; flag < flags.size; flag++){        
-        let flagID = flags[flag].ID                            //defining flagID to be the identifier for the flag we are currently looking at
+    let flags = actionSelected.flags
+    console.log(flags)
+    for(let flag = 0; flag < flags.length; flag++){        
+        let flagID = flags[flag].flagID                            //defining flagID to be the identifier for the flag we are currently looking at
         let relevantTiles = flags[flag].relevantTiles(target)  //defining relevantTiles to be a 2D array of boolean values that represent all relevant tiles for the flag we are currently looking at
         
         for(let x = 0; x < map.xWidth; x++){

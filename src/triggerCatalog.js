@@ -27,7 +27,7 @@ function trigger_commanderDestroyed(playerID){
         gameOver = true
     }
 
-    let trigger = new Trigger(flagID, triggeredFunction)
+    let trigger = new Trigger(flagID, triggeredFunction, playerID)
     return trigger
 }
 
@@ -41,7 +41,7 @@ function trigger_defended(playerID){
         }
     }
 
-    let trigger = new Trigger(flagID, triggeredFunction)
+    let trigger = new Trigger(flagID, triggeredFunction, playerID)
     return trigger
 }
 
@@ -64,7 +64,7 @@ function trigger_guardTowerDestroyed(playerID){
         }
     }
 
-    let trigger = new Trigger(flagID, triggeredFunction)
+    let trigger = new Trigger(flagID, triggeredFunction, playerID)
     return trigger
 }
 

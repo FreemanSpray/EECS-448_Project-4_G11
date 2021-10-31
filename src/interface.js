@@ -92,7 +92,7 @@ function drawUnits() {
                 let yCoord = Math.floor(33 + y*40)
                 let maxWidth = 35
                 ctx.fillText(symbol, xCoord, yCoord, maxWidth)      //drawing symbol for the unit
-                console.log("unit " + symbol + " drawn at (" + xCoord + ", " + yCoord + ") = tile (" + x + ", " + y + ")")
+                //console.log("unit " + symbol + " drawn at (" + xCoord + ", " + yCoord + ") = tile (" + x + ", " + y + ")")
             }
         }
     }

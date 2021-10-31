@@ -250,10 +250,10 @@ function action_summonGuardTower(){
         let Guard_Tower = unit_guardTower(playerID)
         target.unit = Guard_Tower;      //sets target tile's unit to a guardTower
 
-        let defended = trigger_defended()
+        let defended = trigger_defended(playerID)
         let defendedRadius = 2
-        for (let x = -defendedRadius; x < defendedRadius; x++) {
-            for (let y = -defendedRadius; y < defendedRadius; y++) {
+        for (let x = -defendedRadius; x <= defendedRadius; x++) {
+            for (let y = -defendedRadius; y <= defendedRadius; y++) {
                 try{
                     map.tiles[target.xPos + x][target.yPos + y].triggers.push(defended)     //when GT is summoned, all tiles within radius 2 gain "defended" trigger   
                 }
@@ -262,7 +262,7 @@ function action_summonGuardTower(){
             }
         }
 
-        guardTowerDestroyed = trigger_guardTowerDestroyed()
+        guardTowerDestroyed = trigger_guardTowerDestroyed(playerID)
         map.tiles[target.xPos][target.yPos].triggers.push(guardTowerDestroyed)  //adds a trigger to the tile it's summoned on for when the guard tower is destroyed
     }
 
@@ -293,7 +293,7 @@ function action_summonKnight(){
     }
     flags[0] = new Flag(flagID1, relevantTiles1)
     function actionFunction(source, target, playerID){
-        let unit = unit_knight()
+        let unit = unit_knight(playerID)
         map.tiles[target.xPos][target.yPos].unit = unit
     }
 
@@ -323,8 +323,8 @@ function action_summonWizard(){
         return arr
     }
     flags[0] = new Flag(flagID1, relevantTiles1)
-    function actionFunction(source, target){
-        let unit = unit_wizard()
+    function actionFunction(source, target, playerID){
+        let unit = unit_wizard(playerID)
         map.tiles[target.xPos][target.yPos].unit = unit
     }
 

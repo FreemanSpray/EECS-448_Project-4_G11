@@ -28,7 +28,7 @@ function canvasRounding(x, y){
     else if(x > 914 && x < 1408 && y > 626 && y < 827){
         section = 3
     }
-    console.log(section)
+    //console.log(section)
     return(section)
 }
 
@@ -40,7 +40,7 @@ function canvasRounding(x, y){
 function tileRounding(x, y){
     roundedXCoordinate = Math.floor((x - 8)/40)
     roundedYCoordinate = Math.floor((y - 8)/40)
-    console.log([roundedXCoordinate, roundedYCoordinate])
+    //console.log([roundedXCoordinate, roundedYCoordinate])
     return(map.tiles[roundedXCoordinate][roundedYCoordinate])
 }
 
@@ -76,7 +76,6 @@ function cardRounding(x, y){
             cardNum = 4
         }
     }
-    console.log("cardNum = ", cardNum)
     
     let card = null
     if (turn == 1) {                             //check who's turn it is
@@ -114,8 +113,6 @@ function actionRounding(x, y){
                 actionNum = i + 1
                 if(unitSelected != null){                       //check whether there is currently a unit selected
                     action = unitSelected.actions[i]            //if so, set action to the action that has been clicked
-                    console.log("actionNum = " + actionNum)
-                    console.log("action = " + action.name)
                 }
             }
         }
@@ -149,6 +146,8 @@ function clickProcessing(x, y){
         }
     }
     console.log(turn, tileSelected, unitSelected, actionSelected, cardSelected)
+    
+
     drawTemplate()                         //update board to show the outcome of the click
 }
 
@@ -196,8 +195,8 @@ function actionClicked(action) {
 }
 
 document.addEventListener("click", e => {
-    console.log(e)
-    console.log([e.x, e.y])
+    //console.log(e)
+    //console.log([e.x, e.y])
     if(gameOver != true){               //prevent further clicks from being processed once the game has ended.
         clickProcessing(e.x, e.y)
     }
