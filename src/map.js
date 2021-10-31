@@ -1,6 +1,6 @@
 class Map{
     constructor(){
-        this.xWidth = 45
+        this.xWidth = 35
         this.yHeight = 15
         this.tiles = []
 

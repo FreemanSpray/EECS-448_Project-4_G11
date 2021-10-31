@@ -42,8 +42,12 @@ function trigger_guardTowerDestroyed(playerID){
         let defendedRadius = 2
         for (let x = -defendedRadius; x < defendedRadius; x++) {        //goes around to all tiles defended by the guard tower
             for (let y = -defendedRadius; y < defendedRadius; y++) {
-                index = map.tiles[target.xPos + x][target.yPos + y].triggers.indexOf(defended)
-                map.tiles[target.xPos + x][target.yPos + y].triggers.splice(index, 1)       //removes one instance of the "defended" trigger
+                try{
+                    index = map.tiles[target.xPos + x][target.yPos + y].triggers.indexOf(defended)
+                    map.tiles[target.xPos + x][target.yPos + y].triggers.splice(index, 1)       //removes one instance of the "defended" trigger
+                }
+                catch(error){
+                }
             }
         }
     }
@@ -60,7 +64,11 @@ function trigger_magicalLandmine(playerID){
 
         for (let x = -blastRadius; x < blastRadius; x++){
             for (let y = -blastRadius; y < blastRadius; y++) {
-                map.tiles[target.xPos + x][target.yPos + y].unit = null
+                try{
+                    map.tiles[target.xPos + x][target.yPos + y].unit = null
+                }
+                catch(error){
+                }
             }
         }
     }

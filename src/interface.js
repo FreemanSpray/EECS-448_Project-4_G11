@@ -10,6 +10,7 @@ function drawTemplate() {
     drawBoard();
     drawCards();
     drawActions();
+    drawUnits();
 
 
 }
@@ -21,6 +22,7 @@ function drawBoard() {
     // draw board
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 1000);
     //loop for drawing grid lines
     for (var i = 0; i <= 1400; i = i + 40) {
 
@@ -45,6 +47,7 @@ function drawCards() {
     //draw cards
     canvas = document.getElementById("cards");
     ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 1000);
     ctx.beginPath();
     ctx.lineWidth = "3";
     ctx.strokeStyle = "black";
@@ -85,6 +88,7 @@ function drawUnits() {
 function drawActions() {
     canvas = document.getElementById("actions");
     ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 1000);
     ctx.font = "21pt Impact"
     ctx.beginPath();
     ctx.lineWidth = "3";

@@ -88,9 +88,13 @@ function range_radialRange(radius){       //pass in the desired radius and the r
         }
 
         const radiusFromCast = radius
-        for (let x = -radiusFromCast; x < radiusFromCast; x++) {
-            for (let y = -radiusFromCast; y < radiusFromCast; y++) {
-                arr[source.xPos + x][source.yPos + y] = true
+        for (let x = -radiusFromCast; x <= radiusFromCast; x++) {
+            for (let y = -radiusFromCast; y <= radiusFromCast; y++) {
+                try{
+                    arr[source.xPos + x][source.yPos + y] = true
+                }
+                catch(error){
+                }
             }            
         }
         return arr
@@ -250,7 +254,11 @@ function action_summonGuardTower(){
         let defendedRadius = 2
         for (let x = -defendedRadius; x < defendedRadius; x++) {
             for (let y = -defendedRadius; y < defendedRadius; y++) {
-                map.tiles[target.xPos + x][target.yPos + y].triggers.push(defended)     //when GT is summoned, all tiles within radius 2 gain "defended" trigger   
+                try{
+                    map.tiles[target.xPos + x][target.yPos + y].triggers.push(defended)     //when GT is summoned, all tiles within radius 2 gain "defended" trigger   
+                }
+                catch(error){
+                }
             }
         }
 

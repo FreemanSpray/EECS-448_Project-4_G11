@@ -42,10 +42,10 @@ function executeUnitTriggers(tile, flag){
 */
 function executeAction(target){
     console.log(actionSelected)
-    actionSelected.function(unitSelected, target, turn)                     //carry out the action
+    actionSelected.function(tileSelected, target, turn)                     //carry out the action
 
     let flags = []
-    flags = actionSelected.Flags
+    flags = actionSelected.flags
     for(let flag = 0; flag < flags.size; flag++){        
         let flagID = flags[flag].ID                            //defining flagID to be the identifier for the flag we are currently looking at
         let relevantTiles = flags[flag].relevantTiles(target)  //defining relevantTiles to be a 2D array of boolean values that represent all relevant tiles for the flag we are currently looking at

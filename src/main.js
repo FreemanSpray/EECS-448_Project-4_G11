@@ -7,11 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     post: constructs a map and two players, draws board and commanders.
 */
 function initialize(){
-    drawTemplate()
     map = new Map()
     player1 = new Player(1)
     player2 = new Player(2)
-    drawUnits()
+    drawTemplate()
 }
 
 /*   
@@ -144,12 +143,12 @@ function clickProcessing(x, y){
             }
         }
         else {
-            if(actionSelected.validTarget(target)){
+            console.log(actionSelected.validTarget(tileSelected, actionSelected.range, target))
+            if(actionSelected.validTarget(tileSelected, actionSelected.range, target)){
+                console.log("got action")
                 executeAction(target)               //if there is an action currently selected, and if the selected tile is valid for that action, execute the action.
-                drawUnits()                         //update board to show the outcome of the executed action
             }
         }
-    drawActions()                                   //update board to show the actions associated with the selected unit
     }
     else if(canvasSection == 2){                    //if the card area has been clicked
         cardSelected = cardRounding(x, y)           //see which card was clicked
@@ -160,7 +159,8 @@ function clickProcessing(x, y){
     else if(canvasSection == 3){
         actionSelected = actionRounding(x, y)
     }
-    
+    console.log(turn, tileSelected, unitSelected, actionSelected, cardSelected)
+    drawTemplate()                         //update board to show the outcome of the click
 }
 
 document.addEventListener("click", e => {

@@ -93,12 +93,3 @@ class Hand{
 
     }
 }
-
-class Deck{
-    constructor(cards){
-        drawCards()
-        {
-
-        }
-    }
-}
