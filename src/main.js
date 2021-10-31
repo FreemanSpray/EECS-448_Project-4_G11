@@ -92,7 +92,6 @@ function cardRounding(x, y){
             console.log(error)
         }
     }
-    console.log("card = ", card)
     return card
 }
 
@@ -132,36 +131,68 @@ function actionRounding(x, y){
 */
 function clickProcessing(x, y){
     let canvasSection
-    let target
     canvasSection = canvasRounding(x, y)            //check to see which section of the canvas the click has occurred in
     if(canvasSection == 1){                         //map area has been clicked
-        target = tileRounding(x, y)                 //check which tile was clicked
-        if(actionSelected == null){                 //if there is no action currently selected, select the tile and the unit on the tile
-            tileSelected = target
-            if(target.unit != null){                //checking if there is a unit on the tile
-                unitSelected = target.unit
-            }
-        }
-        else {
-            console.log(actionSelected.validTarget(tileSelected, actionSelected.range, target))
-            if(actionSelected.validTarget(tileSelected, actionSelected.range, target)){
-                console.log("got action")
-                executeAction(target)               //if there is an action currently selected, and if the selected tile is valid for that action, execute the action.
-            }
-        }
+        let tile = tileRounding(x, y)               //check which tile was clicked
+        tileClicked(tile)
     }
     else if(canvasSection == 2){                    //if the card area has been clicked
-        cardSelected = cardRounding(x, y)           //see which card was clicked
-        if (cardSelected != null) {
-            tileSelected = findCommander()          //set selected tile to where commander is
-            actionSelected = cardSelected.action    //if a valid card was selected, update actionSelected
+        let card = cardRounding(x, y)               //see which card was clicked
+        if (card != null) {
+            cardClicked(card)
         }
     }
     else if(canvasSection == 3){
-        actionSelected = actionRounding(x, y)
+        let action = actionRounding(x, y)
+        if (action != null) {
+            actionClicked(action)
+        }
     }
     console.log(turn, tileSelected, unitSelected, actionSelected, cardSelected)
     drawTemplate()                         //update board to show the outcome of the click
+}
+
+function tileClicked(tile) {
+    if(actionSelected == null){                 //if there is no action currently selected, select the tile and the unit on the tile
+        selectTile(tile)
+    }
+    else {
+        let validTargetSelected = actionSelected.validTarget(tileSelected, actionSelected.range, tile)
+        if(validTargetSelected){
+            executeAction(tile)               //if there is an action currently selected, and if the selected tile is valid for that action, execute the action.
+        }
+        else {
+            unitSelected = null
+            actionSelected = null
+            cardSelected = null
+            selectTile(tile)
+        }
+    }
+}
+
+function selectTile(tile) {
+    tileSelected = tile
+    unitSelected = tile.unit
+}
+
+function cardClicked(card) {
+    if (card == cardSelected) {                 //if you click the card that is currently selected
+        cardSelected = null                     //deselect the card and action
+        actionSelected = null
+    }
+    else {
+        selectTile(findCommander())             //set selected tile to where commander is
+        cardSelected = card                     //update cardSelected
+        actionSelected = card.action            //update actionSelected
+    }
+}
+
+function actionClicked(action) {
+    if (action == actionSelected) {
+        actionSelected = null
+    } else {
+        actionSelected = action
+    }
 }
 
 document.addEventListener("click", e => {
