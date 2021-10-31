@@ -70,24 +70,3 @@ function trigger_guardTowerDestroyed(playerID){
     let trigger = new Trigger(flagID, triggeredFunction, playerID)
     return trigger
 }
-
-function trigger_magicalLandmine(playerID){
-    let flagID = "UNIT_MOVETOTILE"
-
-    function triggeredFunction(target){
-        const blastRadius = 4
-
-        for (let x = -blastRadius; x < blastRadius; x++){
-            for (let y = -blastRadius; y < blastRadius; y++) {
-                try{
-                    map.tiles[target.xPos + x][target.yPos + y].unit = null
-                }
-                catch(error){
-                }
-            }
-        }
-    }
-
-    let trigger = new Trigger(flagID, triggeredFunction, playerID)
-    return trigger
-}

@@ -447,7 +447,7 @@ function action_placeMagicalLandmine(){
     function actionFunction(source, target, playerID){
         let landMine = trigger_magicalLandmine(playerID) // CHECK THIS OUT
 
-        target.triggers.push(landmine)
+        target.triggers.push(landMine)
     }
 
     let action = new Action(name, range, validTarget, flags, actionFunction)
@@ -538,6 +538,51 @@ function action_wizardFireball(){
     function actionFunction(source, target){
         target.unit = source.unit
         source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function action_fireball(){
+    let name = "fireball"
+    
+    let range = range_radialRange(8)
+    let validTarget = validTarget_inRange()
+    let flags = []
+    let flagID1 = "UNIT_DESTROYED"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        let blastRadius = 3
+        for (let x = -blastRadius; x <= blastRadius; x++) {
+            for (let y = -blastRadius; y <= blastRadius; y++) {
+                try {
+                    arr[target.xPos + x][target.yPos + y] = true
+                } catch (error) {
+                    
+                }                
+            }            
+        }
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    function actionFunction(source, target, playerID){
+        let blastRadius = 3
+        for (let x = -blastRadius; x <= blastRadius; x++) {
+            for (let y = -blastRadius; y <= blastRadius; y++) {
+                try {
+                    map.tiles[target.xPos + x][target.yPos + y].unit = null
+                } catch (error) {
+                }                
+            }            
+        }
     }
 
     let action = new Action(name, range, validTarget, flags, actionFunction)

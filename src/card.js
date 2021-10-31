@@ -5,6 +5,7 @@ class Hand{
 
         this.cards[0] = card_guardTower()
         this.cards[1] = card_knight()
+        this.cards[2] = card_fireball()
         /*
         param: x_pos, y_pos
         pre: 

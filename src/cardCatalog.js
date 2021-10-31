@@ -20,26 +20,16 @@ function card_template(){
 
 
 // DOING
-function magicalLandmineCard(){
-    function function6(x_pos, y_pos)
-    {
-        Magical_Landmine = new Trigger();
-        Map.tiles[x_pos][y_pos].unit.triggers.push(Magical_Landmine);
-    }
-    action6 = new Action("Placed Magical Landmine", 1, null, function6());
-    this.cards[5] = new Card("Magical Landmine", "something", action6);
+function card_fireball(){
+    let name = "Fireball"
+    let description = "kaaBOOOOOM"
 
-}
-
-function card_magicalLandmine(){
-    let name = "Magical Landmine"
-    let description = "Watch your step..."
-
-    let action = action_placeMagicalLandmine()
+    let action = action_fireball()
 
     let card = new Card(name, description, action)
     return card
 }
+
 
 // DONE
 function card_guardTower(){
