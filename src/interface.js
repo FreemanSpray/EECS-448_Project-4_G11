@@ -159,6 +159,6 @@ function drawWinScreen(player){
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 2000, 1000);
-    ctx.font = "39pt Impact"
-    ctx.fillText("PLAYER " + player + "WINS", 100, 425, 100)
+    ctx.font = "90pt Impact"
+    ctx.fillText("PLAYER " + player + " WINS", 530, 350, 350)
 }

@@ -127,22 +127,29 @@ function actionRounding(x, y){
     post: determines what section of the board has been clicked, checks gamestate variables if applicable, then performs the appropriate functionality.
 */
 function clickProcessing(x, y){
-    let canvasSection
-    canvasSection = canvasRounding(x, y)            //check to see which section of the canvas the click has occurred in
-    if(canvasSection == 1){                         //map area has been clicked
-        let tile = tileRounding(x, y)               //check which tile was clicked
-        tileClicked(tile)
-    }
-    else if(canvasSection == 2){                    //if the card area has been clicked
-        let card = cardRounding(x, y)               //see which card was clicked
-        if (card != null) {
-            cardClicked(card)
+    if(actionSelected != null && turn != unitSelected.playerID){
+        alert("That's not your unit!")
+        actionSelected = null
+        unitSelected = null
         }
-    }
-    else if(canvasSection == 3){
-        let action = actionRounding(x, y)
-        if (action != null) {
-            actionClicked(action)
+    else {
+        let canvasSection
+        canvasSection = canvasRounding(x, y)            //check to see which section of the canvas the click has occurred in
+        if(canvasSection == 1){                         //map area has been clicked
+            let tile = tileRounding(x, y)               //check which tile was clicked
+            tileClicked(tile)
+        }
+        else if(canvasSection == 2){                    //if the card area has been clicked
+            let card = cardRounding(x, y)               //see which card was clicked
+            if (card != null) {
+                cardClicked(card)
+            }
+        }
+        else if(canvasSection == 3){
+            let action = actionRounding(x, y)
+            if (action != null) {
+                actionClicked(action)
+            }
         }
     }
     console.log(turn, tileSelected, unitSelected, actionSelected, cardSelected)
@@ -189,7 +196,8 @@ function cardClicked(card) {
 function actionClicked(action) {
     if (action == actionSelected) {
         actionSelected = null
-    } else {
+    } 
+    else {
         actionSelected = action
     }
 }
