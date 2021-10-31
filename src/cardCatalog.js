@@ -6,7 +6,10 @@ class Card{
     }
 }
 
-/*
+/**
+ * @param: name, desc, action
+ * @post : 
+ * @pre  :  
 function card_template(){
     let name = ""
     let description = ""

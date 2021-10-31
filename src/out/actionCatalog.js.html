@@ -1,4 +1,32 @@
-class Action{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: actionCatalog.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: actionCatalog.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class Action{
     constructor(name, range, validTarget, flags, actionFunction){
         this.name = name
         this.range = range
@@ -27,7 +55,7 @@ function commanderMove(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -58,7 +86,7 @@ function commanderAttack(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -83,13 +111,13 @@ function range_radialRange(radius){       //pass in the desired radius and the r
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
         const radiusFromCast = radius
-        for (let x = -radiusFromCast; x <= radiusFromCast; x++) {
-            for (let y = -radiusFromCast; y <= radiusFromCast; y++) {
+        for (let x = -radiusFromCast; x &lt;= radiusFromCast; x++) {
+            for (let y = -radiusFromCast; y &lt;= radiusFromCast; y++) {
                 try{
                     arr[source.xPos + x][source.yPos + y] = true
                 }
@@ -114,7 +142,7 @@ function validTarget_unoccupied(){      //returns a validTarget function where t
             targetUnoccupied = true
         }
 
-        if (targetInRange && targetUnoccupied) {
+        if (targetInRange &amp;&amp; targetUnoccupied) {
             valid = true
         }
 
@@ -151,7 +179,7 @@ function validTarget_unit(){      //returns a validTarget function where the con
             targetOccupied = true
         }
 
-        if (targetInRange && targetOccupied) {
+        if (targetInRange &amp;&amp; targetOccupied) {
             valid = true
         }
 
@@ -172,7 +200,7 @@ function validTarget_enemyUnit(){      //returns a validTarget function where th
             targetOccupied = true
         }
 
-        if (targetInRange && targetOccupied) {
+        if (targetInRange &amp;&amp; targetOccupied) {
             valid = true
         }
 
@@ -191,7 +219,7 @@ function action_template(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -207,7 +235,7 @@ function action_template(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -236,7 +264,7 @@ function action_summonGuardTower(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -252,8 +280,8 @@ function action_summonGuardTower(){
 
         let defended = trigger_defended(playerID)
         let defendedRadius = 2
-        for (let x = -defendedRadius; x <= defendedRadius; x++) {
-            for (let y = -defendedRadius; y <= defendedRadius; y++) {
+        for (let x = -defendedRadius; x &lt;= defendedRadius; x++) {
+            for (let y = -defendedRadius; y &lt;= defendedRadius; y++) {
                 try{
                     map.tiles[target.xPos + x][target.yPos + y].triggers.push(defended)     //when GT is summoned, all tiles within radius 2 gain "defended" trigger   
                 }
@@ -283,7 +311,7 @@ function action_summonKnight(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -314,7 +342,7 @@ function action_summonWizard(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -344,7 +372,7 @@ function action_knightMove(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -370,18 +398,18 @@ function action_knightCharge(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
         let chargeRange = 7
-        for (let x = -chargeRange; x <= chargeRange; x++) {
+        for (let x = -chargeRange; x &lt;= chargeRange; x++) {
             try {
                 arr[source.xPos + x][source.yPos] = true        //directly horizontal tiles within chargeRange are in range
             } catch (error) {
             }
         }
-        for (let y = -chargeRange; y <= chargeRange; y++) {
+        for (let y = -chargeRange; y &lt;= chargeRange; y++) {
             try {
                 arr[source.xPos][source.yPos + y] = true        //directly vertical tiles within chargeRange are in range
             } catch (error) {
@@ -401,7 +429,7 @@ function action_knightCharge(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -416,7 +444,7 @@ function action_knightCharge(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -466,7 +494,7 @@ function action_wizardMove(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -496,7 +524,7 @@ function action_wizardTeleport(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -526,7 +554,7 @@ function action_wizardFireball(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
@@ -556,13 +584,13 @@ function action_fireball(){
         const initialVal = false;
 
         var arr = Array(width);
-        for (var x = 0; x < width; x++) {
+        for (var x = 0; x &lt; width; x++) {
             arr[x] = Array(height).fill(initialVal);
         }
 
         let blastRadius = 3
-        for (let x = -blastRadius; x <= blastRadius; x++) {
-            for (let y = -blastRadius; y <= blastRadius; y++) {
+        for (let x = -blastRadius; x &lt;= blastRadius; x++) {
+            for (let y = -blastRadius; y &lt;= blastRadius; y++) {
                 try {
                     arr[target.xPos + x][target.yPos + y] = true
                 } catch (error) {
@@ -575,8 +603,8 @@ function action_fireball(){
     flags[0] = new Flag(flagID1, relevantTiles1)
     function actionFunction(source, target, playerID){
         let blastRadius = 3
-        for (let x = -blastRadius; x <= blastRadius; x++) {
-            for (let y = -blastRadius; y <= blastRadius; y++) {
+        for (let x = -blastRadius; x &lt;= blastRadius; x++) {
+            for (let y = -blastRadius; y &lt;= blastRadius; y++) {
                 try {
                     map.tiles[target.xPos + x][target.yPos + y].unit = null
                 } catch (error) {
@@ -587,4 +615,26 @@ function action_fireball(){
 
     let action = new Action(name, range, validTarget, flags, actionFunction)
     return action
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#action_summonGuardTower">action_summonGuardTower</a></li><li><a href="global.html#actionRounding">actionRounding</a></li><li><a href="global.html#canvasRounding">canvasRounding</a></li><li><a href="global.html#card_fireball">card_fireball</a></li><li><a href="global.html#cardRounding">cardRounding</a></li><li><a href="global.html#clickProcessing">clickProcessing</a></li><li><a href="global.html#drawActions">drawActions</a></li><li><a href="global.html#drawBoard">drawBoard</a></li><li><a href="global.html#drawCards">drawCards</a></li><li><a href="global.html#drawTemplate">drawTemplate</a></li><li><a href="global.html#drawUnits">drawUnits</a></li><li><a href="global.html#executeAction">executeAction</a></li><li><a href="global.html#executeTileTriggers">executeTileTriggers</a></li><li><a href="global.html#executeUnitTriggers">executeUnitTriggers</a></li><li><a href="global.html#initialize">initialize</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#tileRounding">tileRounding</a></li><li><a href="global.html#trigger_commanderDestroyed">trigger_commanderDestroyed</a></li><li><a href="global.html#unit_guardTower">unit_guardTower</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Oct 31 2021 11:40:38 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

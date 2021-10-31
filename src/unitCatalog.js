@@ -9,7 +9,10 @@ class Unit{
     }
 }
 
-/*
+/**
+ * 
+ * @returns 
+ 
 function unit_template(){
     let symbol = ""
     let description = "Unit description goes here"

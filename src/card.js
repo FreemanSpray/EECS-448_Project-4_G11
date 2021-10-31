@@ -6,34 +6,36 @@ class Hand{
         this.cards[0] = card_guardTower()
         this.cards[1] = card_knight()
         this.cards[2] = card_fireball()
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
-        
-        This function will initiliaze the card and the action related to it. 
-        This one is specifically for guard tower. 
-
+        /**
+        *  
+        *@param: x_pos, y_pos
+        *@pre: 
+        *@post: initializes card action 
+        * 
+        *This function will initiliaze the card and the action related to it. 
+        *This one is specifically for guard tower. 
+        *
         */
         
 
         
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
+        /**
+         *  
+         *@param: x_pos, y_pos
+         *@pre: 
+         *@post: initializes card action 
+         *           
+         *This function will initiliaze the card and the action related to it. 
+         *This one is specifically for Knight.
+         *
+         */
         
-        This function will initiliaze the card and the action related to it. 
-        This one is specifically for Knight.
 
-        */
         
-
-        
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
+        /** 
+        @param: x_pos, y_pos
+        @pre: 
+        @post: initializes card action 
         
         This function will initiliaze the card and the action related to it. 
         This one is specifically for Assassin. 
@@ -42,10 +44,10 @@ class Hand{
 
 
         
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
+        /** 
+        @param: x_pos, y_pos
+        @pre: 
+        @post: initializes card action 
         
         This function will initiliaze the card and the action related to it. 
         This one is specifically for Wizard. 
@@ -54,10 +56,10 @@ class Hand{
 
 
         
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
+        /** 
+        @param: x_pos, y_pos
+        @pre: 
+        @post: initializes card action 
         
         This function will initiliaze the card and the action related to it. 
         This one is specifically for Ethereal Ward. 
@@ -66,10 +68,10 @@ class Hand{
 
         
 
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
+        /** 
+        @param: x_pos, y_pos
+        @pre: 
+        @post: initializes card action 
         
         This function will initiliaze the card and the action related to it. 
         This one is specifically for Magical Landmine.
@@ -78,10 +80,10 @@ class Hand{
 
         
         
-        /*
-        param: x_pos, y_pos
-        pre: 
-        post: initializes card action 
+        /** 
+        @param: x_pos, y_pos
+        @pre: 
+        @post: initializes card action 
         
         This function will initiliaze the card and the action related to it. 
         This one is specifically for Now You See Me. 

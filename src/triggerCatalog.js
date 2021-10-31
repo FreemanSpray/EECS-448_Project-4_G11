@@ -6,7 +6,11 @@ class Trigger{
     }
 }
 
-/*
+/**
+ * 
+ * @param {*} playerID 
+ * @returns 
+ 
 function trigger_template(playerID){
     let flagID = ""
 
