@@ -375,11 +375,17 @@ function action_knightCharge(){
         }
 
         let chargeRange = 7
-        for (let x = -chargeRange; x < chargeRange; x++) {
-            arr[source.xPos + x][source.yPos] = true        //directly horizontal tiles within chargeRange are in range
+        for (let x = -chargeRange; x <= chargeRange; x++) {
+            try {
+                arr[source.xPos + x][source.yPos] = true        //directly horizontal tiles within chargeRange are in range
+            } catch (error) {
+            }
         }
-        for (let y = -chargeRange; y < chargeRange; y++) {
-            arr[source.xPos][source.yPos + y] = true        //directly vertical tiles within chargeRange are in range
+        for (let y = -chargeRange; y <= chargeRange; y++) {
+            try {
+                arr[source.xPos][source.yPos + y] = true        //directly vertical tiles within chargeRange are in range
+            } catch (error) {
+            }
         }
 
 
