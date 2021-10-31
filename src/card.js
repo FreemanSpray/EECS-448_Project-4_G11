@@ -14,7 +14,7 @@ class Hand{
         This one is specifically for guard tower. 
 
         */
-   
+        
 
         
         /*

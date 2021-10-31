@@ -42,9 +42,11 @@ function drawBoard() {
 
 /*   
     post: draws five spaces for cards to be drawn (at this point in implementation, does not have the functionality for drawing the cards themselves)
+    fix: add, the print name, and draw rectangle. maybe second for loop. depending on number of cards, use ctx.filltext to write card's name at the top of the card.
 */
 function drawCards() {
     //draw cards
+    ctx.font = "21 Impact";
     canvas = document.getElementById("cards");
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 2000, 1000);
@@ -53,9 +55,24 @@ function drawCards() {
     ctx.strokeStyle = "black";
 
     //loop draws card rectangles but very messily
+
+    let j = 0;
     for (var i = 80; i <= 704; i = i + 156) {
         ctx.rect(i, 20, 100, 150);      //top left corner is at [i, 20] then [width, height]
         ctx.stroke();
+
+        
+        if(turn == 1 && j < player1.hand.cards.length)
+        {
+            ctx.fillText(player1.hand.cards[j].name, i + 2, 30)
+        }
+        else if (turn == 2 && j < player2.hand.cards.length)
+        {
+            ctx.fillText(player2.hand.cards[j].name, i + 2, 30);
+        }
+        
+
+        j++
     }
 }
 
