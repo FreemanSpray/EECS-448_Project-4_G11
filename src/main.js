@@ -167,5 +167,7 @@ function clickProcessing(x, y){
 document.addEventListener("click", e => {
     console.log(e)
     console.log([e.x, e.y])
-    clickProcessing(e.x, e.y)
+    if(gameOver != true){               //prevent further clicks from being processed once the game has ended.
+        clickProcessing(e.x, e.y)
+    }
 })

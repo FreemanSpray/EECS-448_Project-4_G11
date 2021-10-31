@@ -19,6 +19,18 @@ function trigger_template(playerID){
 }
 */
 
+function trigger_commanderDestroyed(playerID){
+    let flagID = "UNIT_DESTROYED"
+
+    function triggeredFunction(target){
+        drawWinScreen(playerID)
+        gameOver = true
+    }
+
+    let trigger = new Trigger(flagID, triggeredFunction)
+    return trigger
+}
+
 function trigger_defended(playerID){
     let flagID = "UNIT_MOVETOTILE"
 
