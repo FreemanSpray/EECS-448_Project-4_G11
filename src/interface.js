@@ -47,13 +47,13 @@ function drawBoard() {
 */
 function drawCards() {
     //draw cards
-    ctx.font = "21 Impact";
     canvas = document.getElementById("cards");
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 2000, 1000);
     ctx.beginPath();
     ctx.lineWidth = "3";
     ctx.strokeStyle = "black";
+    ctx.font = "bold 12pt Verdana";
 
     //loop draws card rectangles but very messily
 
@@ -62,17 +62,14 @@ function drawCards() {
         ctx.rect(i, 20, 100, 150);      //top left corner is at [i, 20] then [width, height]
         ctx.stroke();
 
-        
         if(turn == 1 && j < player1.hand.cards.length)
         {
-            ctx.fillText(player1.hand.cards[j].name, i + 2, 30)
+            ctx.fillText(player1.hand.cards[j].name, i + 2, 37, 95)
         }
         else if (turn == 2 && j < player2.hand.cards.length)
         {
-            ctx.fillText(player2.hand.cards[j].name, i + 2, 30);
+            ctx.fillText(player2.hand.cards[j].name, i + 2, 37, 95);
         }
-        
-
         j++
     }
 }
