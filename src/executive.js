@@ -9,6 +9,9 @@ function passTurn(){
     turn = (turn % 2) + 1
 }
 
+
+let triggeredFunctions = []
+
 /*
     param: tile, a tile in the map; and flag, a flagID.
     pre: called only when the tile in question is a relevant tile for flag.
@@ -18,7 +21,7 @@ function executeTileTriggers(tile, flag){
     console.log("looking at tile triggers")
     for(let i = 0; i < tile.triggers.length; i++){
         if(tile.triggers[i].flagID == flag){
-            tile.triggers[i].function(tile)
+            triggeredFunctions.push(tile.triggers[i].function)
         }
     }
 }
@@ -31,7 +34,7 @@ function executeTileTriggers(tile, flag){
 function executeUnitTriggers(tile, flag){
     for(let i = 0; i < tile.unit.triggers.length; i++){
         if(tile.unit.triggers[i].flagID == flag){
-            tile.unit.triggers[i].function(tile)
+            triggeredFunctions.push(tile.unit.triggers[i].function)
         }
     }
 }
@@ -42,7 +45,6 @@ function executeUnitTriggers(tile, flag){
     post: Executes target. Then for each flag associated with target, this function executes triggers of relevant tiles and any units on relevant tiles.
 */
 function executeAction(target){
-    actionSelected.function(tileSelected, target, turn)                     //carry out the action
 
     let flags = actionSelected.flags
     console.log(flags)
@@ -60,6 +62,13 @@ function executeAction(target){
                 }
             }
         }
+    }
+
+    actionSelected.function(tileSelected, target, turn)                     //carry out the action
+    
+    while (triggeredFunctions.length > 0) {
+        triggeredFunctions[0](target)
+        triggeredFunctions.splice(0,1)
     }
 
     passTurn()

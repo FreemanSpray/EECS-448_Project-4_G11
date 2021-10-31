@@ -23,8 +23,11 @@ function trigger_commanderDestroyed(playerID){
     let flagID = "UNIT_DESTROYED"
 
     function triggeredFunction(target){
-        drawWinScreen(playerID)
-        gameOver = true
+        if (playerID == 1) {
+            gameWon = 2
+        } else if (playerID == 2){
+            gameWon = 1
+        }
     }
 
     let trigger = new Trigger(flagID, triggeredFunction, playerID)

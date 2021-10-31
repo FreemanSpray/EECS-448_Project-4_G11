@@ -6,13 +6,18 @@ let context
     post: draws board, cards, and actions.
 */
 function drawTemplate() {
-    drawBoard();
-    drawCards();
-    drawActions();
-    drawUnits();
-
-    if (actionSelected != null) {
-        highlightTiles_ActionRange()
+    if (gameWon == null) {
+        drawBoard();
+        drawCards();
+        drawActions();
+        drawUnits();
+    
+        if (actionSelected != null) {
+            highlightTiles_ActionRange()
+        }
+    }
+    else {
+        drawWinScreen(gameWon)
     }
 }
 

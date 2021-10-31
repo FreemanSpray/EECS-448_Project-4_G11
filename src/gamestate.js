@@ -3,4 +3,4 @@ let tileSelected = null
 let unitSelected = null
 let actionSelected = null
 let cardSelected = null
-let gameOver = false
+let gameWon = null
