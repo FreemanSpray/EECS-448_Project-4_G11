@@ -153,6 +153,7 @@ function clickProcessing(x, y){
     else if(canvasSection == 2){                    //if the card area has been clicked
         cardSelected = cardRounding(x, y)           //see which card was clicked
         if (cardSelected != null) {
+            tileSelected = findCommander()          //set selected tile to where commander is
             actionSelected = cardSelected.action    //if a valid card was selected, update actionSelected
         }
     }

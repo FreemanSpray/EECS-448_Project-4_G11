@@ -6,13 +6,14 @@ let context
     post: draws board, cards, and actions.
 */
 function drawTemplate() {
-
     drawBoard();
     drawCards();
     drawActions();
     drawUnits();
 
-
+    if (actionSelected != null) {
+        highlightTiles_ActionRange()
+    }
 }
 
 /*   
@@ -111,10 +112,25 @@ function drawSelectedInfo() {
 
 }
 
-function highlightTiles_MoveRange() {
+function highlightTiles_ActionRange() {
+    actionRange = actionSelected.range(tileSelected)
 
+    for (let x = 0; x < map.xWidth; x++) {
+        for (let y = 0; y < map.yHeight; y++) {
+            if (actionRange[x][y]) {
+                highlightTile(x,y)
+            }            
+        }        
+    }
 }
 
-function highlightTiles_ActionRange() {
+function highlightTile(x, y) {
+    canvas = document.getElementById("board");
+    ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.lineWidth = "2";
+    ctx.strokeStyle = "red";
 
+    ctx.rect(40*x, 40*y, 40, 40)
+    ctx.stroke()
 }
