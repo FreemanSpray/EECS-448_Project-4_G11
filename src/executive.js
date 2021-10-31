@@ -41,10 +41,11 @@ function executeUnitTriggers(tile, flag){
     post: Executes target. Then for each flag associated with target, this function executes triggers of relevant tiles and any units on relevant tiles.
 */
 function executeAction(target){
-    action.function(target)                     //carry out the action
+    console.log(actionSelected)
+    actionSelected.function(unitSelected, target, turn)                     //carry out the action
 
     let flags = []
-    flags = action.Flags
+    flags = actionSelected.Flags
     for(let flag = 0; flag < flags.size; flag++){        
         let flagID = flags[flag].ID                            //defining flagID to be the identifier for the flag we are currently looking at
         let relevantTiles = flags[flag].relevantTiles(target)  //defining relevantTiles to be a 2D array of boolean values that represent all relevant tiles for the flag we are currently looking at

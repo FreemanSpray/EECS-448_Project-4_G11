@@ -15,12 +15,66 @@ class Flag{
     }
 }
 
-function baseMove(){    //placeholder for commander movement function
+function commanderMove(){
+    let name = "Move"
+    
+    let range = range_radialRange(1)
+    let validTarget = validTarget_unoccupied()
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
 
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    function actionFunction(source, target, playerID){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
 }
 
-function baseAttack(){    //placeholder for commander attack function
+function commanderAttack(){
+    let name = "Attack"
+    
+    let range = range_radialRange(1)
+    let validTarget = validTarget_unit()
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    let flagID2 = "UNIT_DESTROYED"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
 
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    flags[1] = new Flag(flagID2, relevantTiles1)
+    function actionFunction(source, target, playerID){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
 }
 
 function range_radialRange(radius){       //pass in the desired radius and the range function for a radial range will be returned

@@ -144,7 +144,7 @@ function clickProcessing(x, y){
             }
         }
         else {
-            if(action.validTarget(target)){
+            if(actionSelected.validTarget(target)){
                 executeAction(target)               //if there is an action currently selected, and if the selected tile is valid for that action, execute the action.
                 drawUnits()                         //update board to show the outcome of the executed action
             }
