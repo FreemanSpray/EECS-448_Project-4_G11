@@ -28,6 +28,8 @@ function drawBoard() {
     for (var i = 0; i <= 1400; i = i + 40) {
 
         ctx.beginPath();
+        ctx.lineWidth = "1";
+        ctx.strokeStyle = "black";
         //vertical lines
         ctx.moveTo(i, 0);
         ctx.lineTo(i, 1400);
@@ -121,7 +123,6 @@ function drawActions() {
     }
 }
 
-
 function drawSelectedInfo() {
 
 }
@@ -147,4 +148,12 @@ function highlightTile(x, y) {
 
     ctx.rect(40*x, 40*y, 40, 40)
     ctx.stroke()
+}
+
+function drawWinScreen(player){
+    canvas = document.getElementById("board");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 1000);
+    ctx.font = "39pt Impact"
+    ctx.fillText("PLAYER " + player + "WINS", 100, 425, 100)
 }
