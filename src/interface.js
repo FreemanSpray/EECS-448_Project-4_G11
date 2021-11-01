@@ -128,10 +128,10 @@ function drawActions() {
     }
 }
 
-function drawSelectedInfo() {
-
-}
-
+/*   
+    pre:    an action or card is selected
+    post:   tiles within range of the selected action or card are highlighted
+*/
 function highlightTiles_ActionRange() {
     actionRange = actionSelected.range(tileSelected)
 
@@ -144,6 +144,11 @@ function highlightTiles_ActionRange() {
     }
 }
 
+/*   
+    param:  x, the x coordinate of the tile to highlight
+            y, the y coordinate of the tile to highlight
+    post:   the indicated tile is highlighted on the UI
+*/
 function highlightTile(x, y) {
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
@@ -155,6 +160,11 @@ function highlightTile(x, y) {
     ctx.stroke()
 }
 
+/*   
+    param:  player, the playerID of the player who won
+    pre:    a commander has been killed
+    post:   winscreen is drawn over the gameboard area
+*/
 function drawWinScreen(player){
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");

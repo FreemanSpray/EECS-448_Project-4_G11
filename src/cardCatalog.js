@@ -20,15 +20,7 @@ function card_template(){
 
 
 // DOING
-function card_fireball(){
-    let name = "Fireball"
-    let description = "kaaBOOOOOM"
 
-    let action = action_fireball()
-
-    let card = new Card(name, description, action)
-    return card
-}
 
 
 // DONE
@@ -51,9 +43,19 @@ function card_knight(){
     return card
 }
 
+function card_fireball(){
+    let name = "Fireball"
+    let description = "kaaBOOOOOM"
+
+    let action = action_fireball()
+
+    let card = new Card(name, description, action)
+    return card
+}
+
 // TO DO
 
-
+/*
 function assassinCard(){
     function function3(x_pos, y_pos)
     {
@@ -85,8 +87,6 @@ function etherealWardCard(){
 
 }
 
-
-
 function nowYouSeeMeCard(){
     function function7(x_pos, y_pos)
     {
@@ -96,3 +96,4 @@ function nowYouSeeMeCard(){
     action7 = new Action("Placed Now You See Me", 1, null, function7());
     this.cards[6] = new Card("Now You See Me", "something", action7);
 }
+*/

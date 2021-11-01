@@ -158,6 +158,11 @@ function clickProcessing(x, y){
     drawTemplate()                         //update board to show the outcome of the click
 }
 
+
+/*   
+    param:  tile, the tile object that was clicked
+    post:   provides proper functionality for a tile being clicked in any situation
+*/
 function tileClicked(tile) {
     if(actionSelected == null){                 //if there is no action currently selected, select the tile and the unit on the tile
         selectTile(tile)
@@ -176,11 +181,21 @@ function tileClicked(tile) {
     }
 }
 
+/*   
+    param:  tile, the tile to select
+    pre:    none
+    post:   the tile passed in is selected, along with any unit on that tile
+*/
 function selectTile(tile) {
     tileSelected = tile
     unitSelected = tile.unit
 }
 
+/*   
+    param:  card, the card object that was clicked
+    pre:    none
+    post:   provides functionality for a card being clicked to either select or unselect it
+*/
 function cardClicked(card) {
     if (card == cardSelected) {                 //if you click the card that is currently selected
         cardSelected = null                     //deselect the card and action
@@ -193,6 +208,11 @@ function cardClicked(card) {
     }
 }
 
+/*   
+    param:  action, the unit action that was clicked
+    pre:    none
+    post:   provides functionality for an action being clicked to either select or unselect it
+*/
 function actionClicked(action) {
     if (action == actionSelected) {
         actionSelected = null
