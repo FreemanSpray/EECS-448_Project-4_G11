@@ -1,12 +1,69 @@
-function test1(){ //CONCEDING THE GAME
+function test1(){ //PlAYER 1 CONCEDING THE GAME
     clickProcessing(30,30) //select p1 commander
     clickProcessing(1150,730) //select attack
     clickProcessing(30,30) //target commander with its own attack
+    if(gameWon == 2){
+        return(true)
+    }
+    return(false)
 }
 
+function test2(){ //PlAYER 2 TAKING PLAYER 1's COMMANDER
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //move p1 Commander to tile (1, 0)
+    clickProcessing(290,700) //p2 selects Knight card
+    clickProcessing(1190, 390) //place Knight at tile (29, 9)
+    clickProcessing(70,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    clickProcessing(1190, 390) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(1070,270) //move p2 Knight to tile (26, 6)
+    clickProcessing(110,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(150,30) //move p1 Commander to tile (3, 0)
+    clickProcessing(1070,270) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(950,150) //move p2 Knight to tile (23, 3)
+    clickProcessing(150,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(190,30) //move p1 Commander to tile (4, 0)
+    clickProcessing(950,150) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(830,30) //move p2 Knight to tile (20, 0)
+    clickProcessing(190,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(230,30) //move p1 Commander to tile (5, 0)
+    clickProcessing(830,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(710,30) //move p2 Knight to tile (17, 0)
+    clickProcessing(230,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(270,30) //move p1 Commander to tile (6, 0)
+    clickProcessing(710,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(590,30) //move p2 Knight to tile (14, 0)
+    clickProcessing(270,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(310,30) //move p1 Commander to tile (7, 0)
+    clickProcessing(590,30) //select p2 Knight
+    clickProcessing(1150,730) //select charge
+    clickProcessing(310,30) //target p1 commander with charge
+    if(gameWon == 2){
+        return(true)
+    }
+    return(false)
+}
+
+let outcomes = []
 
 function runTests(){ //runs test suite
-    test1()
+    outcomes.push(test1())
+    resetGame()
+    outcomes.push(test2())
+    resetGame()
+    console.log(outcomes)
 }
 
 

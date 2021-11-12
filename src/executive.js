@@ -18,7 +18,7 @@ let triggeredFunctions = []
     post: for all triggers belonging to tile, compares flag to that trigger's flagID. If there is a match, it executes that trigger's function.
 */
 function executeTileTriggers(tile, flag){
-    console.log("looking at tile triggers")
+    //console.log("looking at tile triggers")
     for(let i = 0; i < tile.triggers.length; i++){
         if(tile.triggers[i].flagID == flag){
             triggeredFunctions.push(tile.triggers[i].function)
@@ -47,7 +47,7 @@ function executeUnitTriggers(tile, flag){
 function executeAction(target){
 
     let flags = actionSelected.flags
-    console.log(flags)
+    //console.log(flags)
     for(let flag = 0; flag < flags.length; flag++){        
         let flagID = flags[flag].flagID                            //defining flagID to be the identifier for the flag we are currently looking at
         let relevantTiles = flags[flag].relevantTiles(target)  //defining relevantTiles to be a 2D array of boolean values that represent all relevant tiles for the flag we are currently looking at

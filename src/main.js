@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    initialize()
+    drawMenu()
+    //initialize()
 });
 
 /*   
@@ -11,7 +12,6 @@ function initialize(){
     player1 = new Player(1)
     player2 = new Player(2)
     drawTemplate()
-    //runTests()
 }
 
 /*   
@@ -122,6 +122,22 @@ function actionRounding(x, y){
 
 }
 
+function menuRounding(x, y){
+    if(x >= 360 && x <= 1050){
+        if(y > 200 && y < 270){
+            gameStart = true
+            initialize()
+        }
+        else if(y > 300 && y < 370){
+            window.open(document.getElementById("rules").href)
+        }
+        else if(y > 400 && y < 470){
+            gameStart = true
+            initialize()
+            runTests()
+        }
+    }
+}
 /*   
     param: x and y, the x and y coordinates of a click on the screen
     pre: called only when a click has been registered by the click event listener.
@@ -153,7 +169,7 @@ function clickProcessing(x, y){
             }
         }
     }
-    console.log(turn, tileSelected, unitSelected, actionSelected, cardSelected)
+    //console.log(turn, tileSelected, unitSelected, actionSelected, cardSelected)
     
 
     drawTemplate()                         //update board to show the outcome of the click
@@ -224,10 +240,14 @@ function actionClicked(action) {
 }
 
 document.addEventListener("click", e => {
-    //console.log(e)
-    //console.log([e.x, e.y])
+    
     if(gameWon == null){               //prevent further clicks from being processed once the game has ended.
-        console.log(e.x, e.y)
-        clickProcessing(e.x, e.y)
+        if(gameStart == false){
+            menuRounding(e.x, e.y)
+        }
+        else{
+            console.log(e.x, e.y)
+            clickProcessing(e.x, e.y)
+        }
     }
 })

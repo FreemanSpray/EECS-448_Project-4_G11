@@ -21,6 +21,27 @@ function drawTemplate() {
     }
 }
 
+function drawMenu() {
+    canvas = document.getElementById("board");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 1000);
+    for (let i = 0; i < 3; i++){
+        ctx.beginPath()
+        ctx.lineWidth = "1"
+        ctx.moveTo(1050, 200 + 100*i)
+        ctx.lineTo(1050, 270 + 100*i)
+        ctx.lineTo(360, 270 + 100*i)
+        ctx.lineTo(360, 200 + 100*i)
+        ctx.lineTo(1050, 200 + 100*i)
+        ctx.strokeStyle = "black"
+        ctx.stroke()
+        ctx.font = "bold 29pt Verdana";
+        ctx.fillText("PLAY", 650, 250)
+        ctx.fillText("HOW TO PLAY", 560, 350)
+        ctx.fillText("TEST", 650, 450)
+    }
+}
+
 /*   
     post: draws the board
 */
