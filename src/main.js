@@ -11,6 +11,7 @@ function initialize(){
     player1 = new Player(1)
     player2 = new Player(2)
     drawTemplate()
+    //runTests()
 }
 
 /*   
@@ -226,6 +227,7 @@ document.addEventListener("click", e => {
     //console.log(e)
     //console.log([e.x, e.y])
     if(gameWon == null){               //prevent further clicks from being processed once the game has ended.
+        console.log(e.x, e.y)
         clickProcessing(e.x, e.y)
     }
 })
