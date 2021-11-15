@@ -193,3 +193,13 @@ function drawWinScreen(player){
     ctx.font = "90pt Impact"
     ctx.fillText("PLAYER " + player + " WINS", 530, 350, 350)
 }
+
+function drawTestResults(){
+    canvas = document.getElementById("board")
+    ctx = canvas.getContext("2d")
+    ctx.clearRect(0, 0, 2000, 1000);
+    ctx.font = "22pt Calibri"
+    for(let i = 0; i < numberOfTests; i++){
+        ctx.fillText(testDescriptions[i] + outcomes[i], 15, 30 + 40*i)
+    }
+}

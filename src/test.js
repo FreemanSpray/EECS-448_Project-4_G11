@@ -1,11 +1,19 @@
+let numberOfTests = 5
+let outcomes = []
+let testDescriptions = ["* Player 1 conceding the game results in player 2 winning: ", 
+    "* Player 2 taking player 1's Commander results in player 2 winning: ", 
+    "* Taking a Guard Tower with a Knight results in both units being destroyed: ",
+    "* Placing a Guard Tower near an enemy unit does not result in that unit being destroyed: ",
+    "* Moving a unit from one defended tile to another results in that unit being destroyed: "]
+
 function test1(){ //PlAYER 1 CONCEDING THE GAME
     clickProcessing(30,30) //select p1 commander
     clickProcessing(1150,730) //select attack
     clickProcessing(30,30) //target commander with its own attack
     if(gameWon == 2){
-        return(true)
+        return "PASSED"
     }
-    return(false)
+    return "FAILED"
 }
 
 function test2(){ //PlAYER 2 TAKING PLAYER 1's COMMANDER
@@ -51,19 +59,173 @@ function test2(){ //PlAYER 2 TAKING PLAYER 1's COMMANDER
     clickProcessing(1150,730) //select charge
     clickProcessing(310,30) //target p1 commander with charge
     if(gameWon == 2){
-        return(true)
+        return "PASSED"
     }
-    return(false)
+    return "FAILED"
 }
 
-let outcomes = []
+function test3(){ //MUTUALLY ASSURED DESTRUCTION (Knight takes Guard Tower)
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //move p1 Commander to tile (1, 0)
+    clickProcessing(290,700) //p2 selects Knight card
+    clickProcessing(1190, 390) //place Knight at tile (29, 9)
+    clickProcessing(70,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    clickProcessing(1190, 390) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(1070,270) //move p2 Knight to tile (26, 6)
+    clickProcessing(110,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(150,30) //move p1 Commander to tile (3, 0)
+    clickProcessing(1070,270) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(950,150) //move p2 Knight to tile (23, 3)
+    clickProcessing(150,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(190,30) //move p1 Commander to tile (4, 0)
+    clickProcessing(950,150) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(830,30) //move p2 Knight to tile (20, 0)
+    clickProcessing(190,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(230,30) //move p1 Commander to tile (5, 0)
+    clickProcessing(830,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(710,30) //move p2 Knight to tile (17, 0)
+    clickProcessing(230,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(270,30) //move p1 Commander to tile (6, 0)
+    clickProcessing(710,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(590,30) //move p2 Knight to tile (14, 0)
+    clickProcessing(130,700) //p1 selects Guard Tower card
+    clickProcessing(390,30) //place Guard Tower at tile (9, 0)
+    clickProcessing(590,30) //select p2 Knight
+    clickProcessing(1150,730) //select charge
+    clickProcessing(390,30) //target p1 Guard Tower with charge
+    if(map.tiles[9][0].unit == null){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+function test4(){ //A DELICATE POSITION (Placing Guard Tower near an enemy unit does not destroy it)
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //move p1 Commander to tile (1, 0)
+    clickProcessing(290,700) //p2 selects Knight card
+    clickProcessing(1190, 390) //place Knight at tile (29, 9)
+    clickProcessing(70,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    clickProcessing(1190, 390) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(1070,270) //move p2 Knight to tile (26, 6)
+    clickProcessing(110,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(150,30) //move p1 Commander to tile (3, 0)
+    clickProcessing(1070,270) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(950,150) //move p2 Knight to tile (23, 3)
+    clickProcessing(150,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(190,30) //move p1 Commander to tile (4, 0)
+    clickProcessing(950,150) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(830,30) //move p2 Knight to tile (20, 0)
+    clickProcessing(190,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(230,30) //move p1 Commander to tile (5, 0)
+    clickProcessing(830,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(710,30) //move p2 Knight to tile (17, 0)
+    clickProcessing(230,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(270,30) //move p1 Commander to tile (6, 0)
+    clickProcessing(710,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(590,30) //move p2 Knight to tile (14, 0)
+    clickProcessing(270,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(310,30) //move p1 Commander to tile (7, 0)
+    clickProcessing(590,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(470,30) //move p2 Knight to tile (11, 0)
+    clickProcessing(130,700) //p1 selects Guard Tower card
+    clickProcessing(390,30) //place Guard Tower at tile (9, 0)
+    if(map.tiles[11][0].unit.symbol == "Kn"){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+function test5(){ //A DELICATE POSITION CONTINUED (Moving into a defended tile following the same path as test 4 destroys the knight)
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //move p1 Commander to tile (1, 0)
+    clickProcessing(290,700) //p2 selects Knight card
+    clickProcessing(1190, 390) //place Knight at tile (29, 9)
+    clickProcessing(70,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    clickProcessing(1190, 390) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(1070,270) //move p2 Knight to tile (26, 6)
+    clickProcessing(110,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(150,30) //move p1 Commander to tile (3, 0)
+    clickProcessing(1070,270) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(950,150) //move p2 Knight to tile (23, 3)
+    clickProcessing(150,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(190,30) //move p1 Commander to tile (4, 0)
+    clickProcessing(950,150) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(830,30) //move p2 Knight to tile (20, 0)
+    clickProcessing(190,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(230,30) //move p1 Commander to tile (5, 0)
+    clickProcessing(830,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(710,30) //move p2 Knight to tile (17, 0)
+    clickProcessing(230,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(270,30) //move p1 Commander to tile (6, 0)
+    clickProcessing(710,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(590,30) //move p2 Knight to tile (14, 0)
+    clickProcessing(270,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(310,30) //move p1 Commander to tile (7, 0)
+    clickProcessing(590,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(470,30) //move p2 Knight to tile (11, 0)
+    clickProcessing(130,700) //p1 selects Guard Tower card
+    clickProcessing(390,30) //place Guard Tower at tile (9, 0)
+    clickProcessing(470,30) //select p2 Knight
+    clickProcessing(1150,670) //select move
+    clickProcessing(430,30) //move p2 Knight to tile (11, 0)
+    if(map.tiles[10][0].unit == null){
+        return "PASSED"
+    }
+    return "FAILED"
+}
 
 function runTests(){ //runs test suite
     outcomes.push(test1())
     resetGame()
     outcomes.push(test2())
     resetGame()
-    console.log(outcomes)
+    outcomes.push(test3())
+    resetGame()
+    outcomes.push(test4())
+    resetGame()
+    outcomes.push(test5())
+    resetGame()
+    drawTestResults()
 }
 
 
