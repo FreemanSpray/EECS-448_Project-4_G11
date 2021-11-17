@@ -112,11 +112,17 @@ function drawCards() {
 
         if(turn == 1 && j < player1.hand.cards.length)
         {
-            ctx.fillText(player1.hand.cards[j].name, i + 2, 37, 95)
+            ctx.font = "bold 12pt Verdana";
+            ctx.fillText(player1.hand.cards[j].name, i + 2, 37, 95);
+            ctx.font = "8pt Verdana";
+            ctx.fillText(player1.hand.cards[j].description, i + 2, 60, 95);
         }
         else if (turn == 2 && j < player2.hand.cards.length)
         {
+            ctx.font = "bold 12pt Verdana";
             ctx.fillText(player2.hand.cards[j].name, i + 2, 37, 95);
+            ctx.font = "8pt Verdana";
+            ctx.fillText(player1.hand.cards[j].description, i + 2, 60, 95);
         }
         j++
     }
