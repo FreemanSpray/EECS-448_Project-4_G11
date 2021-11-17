@@ -23,6 +23,7 @@ function drawTemplate() {
     }
 }
 
+
 /*
     pre: log must be drawn
 */
@@ -37,6 +38,27 @@ function drawLog()
     for(var i = 0; i < log.length;i++)
     {
         ctx.fillText(log[i] + "\n", 3, 12+14*i);
+    }
+}
+
+function drawMenu() {
+    canvas = document.getElementById("board");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 1000);
+    for (let i = 0; i < 3; i++){
+        ctx.beginPath()
+        ctx.lineWidth = "1"
+        ctx.moveTo(1050, 200 + 100*i)
+        ctx.lineTo(1050, 270 + 100*i)
+        ctx.lineTo(360, 270 + 100*i)
+        ctx.lineTo(360, 200 + 100*i)
+        ctx.lineTo(1050, 200 + 100*i)
+        ctx.strokeStyle = "black"
+        ctx.stroke()
+        ctx.font = "bold 29pt Verdana";
+        ctx.fillText("PLAY", 650, 250)
+        ctx.fillText("HOW TO PLAY", 560, 350)
+        ctx.fillText("TEST", 650, 450)
     }
 }
 
@@ -181,13 +203,33 @@ function highlightTile(x, y) {
 
 /*   
     param:  player, the playerID of the player who won
-    pre:    a commander has been killed
-    post:   winscreen is drawn over the gameboard area
+    pre:    one or both commanders have been destroyed
+    post:   winscreen is drawn (printed) over the gameboard area
 */
 function drawWinScreen(player){
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 2000, 1000);
     ctx.font = "90pt Impact"
-    ctx.fillText("PLAYER " + player + " WINS", 530, 350, 350)
+    if(gameWon == 0){
+        ctx.fillText("IT'S A DRAW", 530, 350, 350)
+    }
+    else {
+        ctx.fillText("PLAYER " + player + " WINS", 530, 350, 350)
+    }
+}
+
+/*   
+    param:  
+    pre:    Test button has been clicked in the menu
+    post:   draw (print) test results over the gameboard area
+*/
+function drawTestResults(){
+    canvas = document.getElementById("board")
+    ctx = canvas.getContext("2d")
+    ctx.clearRect(0, 0, 2000, 1000);
+    ctx.font = "22pt Calibri"
+    for(let i = 0; i < numberOfTests; i++){
+        ctx.fillText(testDescriptions[i] + outcomes[i], 15, 30 + 40*i)
+    }
 }

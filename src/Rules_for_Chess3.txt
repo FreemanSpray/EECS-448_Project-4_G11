@@ -1,0 +1,33 @@
+Units:
+Commander(*)
+	Summon Range: 1 tile
+	Movement: 1 tile in any direction
+	Ability: Attacks enemy units in a radius of 1 tile
+	Passive: If captured, you lose the game
+Knight(Kn)
+	Summon Range: 5 tiles 
+	Movement: 3 tiles in any direction
+	Ability: Attacks a 7 tile radius in vertical or horizontal manner.
+	Passive: None available 
+Guard Tower(GT)
+	Summon Range: 3 tiles
+	Movement: No movement after initial placement
+	Ability: Defends a 2 tile radius after initial placement
+	Passive:None available
+	How to destroy: In order to destroy the guard tower, you need to trade a unit that will result in guard tower going offline and not defending the 2 tile radius of initial placement. 
+
+
+Cards:   
+Fireball(Fb)
+	Summon Range: 8 tiles
+	Movement: No movement
+	Ability: The commander can use the card in a radius of 8 tiles. Upon using the card, it destroys in a 3 tile radius of where it was placed. 
+
+
+
+Rules:
+	1. Use an action to play a card. 
+	2. Place your units strategically in order to protect your commander as well as in a way that you have an attack plan to capture the enemy commander.
+	3. Capture of any unit which is not the commander will result in continuation of the game. 
+	4. The units of the enemy team can be captured using abilities of the units or by placing cards which can be done by using the action of the commander. 
+	5. Capture commander results in end of the game, the remaining commander team wins. 
