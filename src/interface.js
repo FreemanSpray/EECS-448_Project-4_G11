@@ -8,9 +8,11 @@ let context
 function drawTemplate() {
     if (gameWon == null) {
         drawBoard();
+        drawLog();
         drawCards();
         drawActions();
         drawUnits();
+
     
         if (actionSelected != null) {
             highlightTiles_ActionRange()
@@ -18,6 +20,23 @@ function drawTemplate() {
     }
     else {
         drawWinScreen(gameWon)
+    }
+}
+
+/*
+    pre: log must be drawn
+*/
+function drawLog()
+{
+    canvas = document.getElementById("log");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 2000, 2000);
+    ctx.font = "12px Georgia";
+
+    // draw the log on the screen
+    for(var i = 0; i < log.length;i++)
+    {
+        ctx.fillText(log[i] + "\n", 3, 12+14*i);
     }
 }
 

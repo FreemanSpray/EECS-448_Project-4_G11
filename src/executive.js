@@ -65,6 +65,8 @@ function executeAction(target){
     }
 
     actionSelected.function(tileSelected, target, turn)                     //carry out the action
+
+    log.push("Player " + turn + " has " + actionSelected.name)              //mark the action in the log
     
     while (triggeredFunctions.length > 0) {
         triggeredFunctions[0](target)
