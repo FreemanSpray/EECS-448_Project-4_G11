@@ -23,9 +23,13 @@ function trigger_commanderDestroyed(playerID){
     let flagID = "UNIT_DESTROYED"
 
     function triggeredFunction(target){
-        if (playerID == 1) {
+        if(gameWon != null){ //draw clause, in case this is the second commander destroyed trigger being executed.
+            gameWon = 0
+        }
+        else if (playerID == 1) {
             gameWon = 2
-        } else if (playerID == 2){
+        } 
+        else if (playerID == 2){
             gameWon = 1
         }
     }

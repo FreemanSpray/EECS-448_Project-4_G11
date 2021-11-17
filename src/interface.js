@@ -183,17 +183,27 @@ function highlightTile(x, y) {
 
 /*   
     param:  player, the playerID of the player who won
-    pre:    a commander has been killed
-    post:   winscreen is drawn over the gameboard area
+    pre:    one or both commanders have been destroyed
+    post:   winscreen is drawn (printed) over the gameboard area
 */
 function drawWinScreen(player){
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, 2000, 1000);
     ctx.font = "90pt Impact"
-    ctx.fillText("PLAYER " + player + " WINS", 530, 350, 350)
+    if(gameWon == 0){
+        ctx.fillText("IT'S A DRAW", 530, 350, 350)
+    }
+    else {
+        ctx.fillText("PLAYER " + player + " WINS", 530, 350, 350)
+    }
 }
 
+/*   
+    param:  
+    pre:    Test button has been clicked in the menu
+    post:   draw (print) test results over the gameboard area
+*/
 function drawTestResults(){
     canvas = document.getElementById("board")
     ctx = canvas.getContext("2d")

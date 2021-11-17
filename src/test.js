@@ -1,10 +1,12 @@
-let numberOfTests = 5
+let numberOfTests = 7
 let outcomes = []
 let testDescriptions = ["* Player 1 conceding the game results in player 2 winning: ", 
     "* Player 2 taking player 1's Commander results in player 2 winning: ", 
     "* Taking a Guard Tower with a Knight results in both units being destroyed: ",
     "* Placing a Guard Tower near an enemy unit does not result in that unit being destroyed: ",
-    "* Moving a unit from one defended tile to another results in that unit being destroyed: "]
+    "* Moving a unit from one defended tile to another results in that unit being destroyed: ",
+    "* Both Commanders being destroyed by the same Fireball results in a draw: ",
+    "* One Commander sacrificing itself to destroy the other results in a draw: "]
 
 function test1(){ //PlAYER 1 CONCEDING THE GAME
     clickProcessing(30,30) //select p1 commander
@@ -214,6 +216,213 @@ function test5(){ //A DELICATE POSITION CONTINUED (Moving into a defended tile f
     return "FAILED"
 }
 
+function test6(){ //DRAW SCENARIO 1: Both Commanders destroyed by a Fireball
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //move p1 Commander to tile (1, 0)
+    clickProcessing(1390,590) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1350,550) //move p2 Commander to tile (33, 13)
+    clickProcessing(70,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    clickProcessing(1350,550) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1310,510) //move p2 Commander to tile (32, 12)
+    clickProcessing(110,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(150,30) //move p1 Commander to tile (3, 0)
+    clickProcessing(1310,510) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1270,470) //move p2 Commander to tile (31, 11)
+    clickProcessing(150,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(190,30) //move p1 Commander to tile (4, 0)
+    clickProcessing(1270,470) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1230,430) //move p2 Commander to tile (30, 10)
+    clickProcessing(190,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(230,30) //move p1 Commander to tile (5, 0)
+    clickProcessing(1230,430) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1190,390) //move p2 Commander to tile (29, 9)
+    clickProcessing(230,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(270,30) //move p1 Commander to tile (6, 0)
+    clickProcessing(1190,390) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1150,350) //move p2 Commander to tile (28, 8)
+    clickProcessing(270,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(310,30) //move p1 Commander to tile (7, 0)
+    clickProcessing(1150,350) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1110,310) //move p2 Commander to tile (27, 7)
+    clickProcessing(310,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(350,30) //move p1 Commander to tile (8, 0)
+    clickProcessing(1110,310) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1070,270) //move p2 Commander to tile (26, 6)
+    clickProcessing(350,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(390,30) //move p1 Commander to tile (9, 0)
+    clickProcessing(1070,270) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1030,230) //move p2 Commander to tile (25, 5)
+    clickProcessing(390,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(430,30) //move p1 Commander to tile (10, 0)
+    clickProcessing(1030,230) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(990,190) //move p2 Commander to tile (24, 4)
+    clickProcessing(430,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(470,30) //move p1 Commander to tile (11, 0)
+    clickProcessing(990,190) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(950,150) //move p2 Commander to tile (23, 3)
+    clickProcessing(470,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(510,30) //move p1 Commander to tile (12, 0)
+    clickProcessing(950,150) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(910,110) //move p2 Commander to tile (22, 2)
+    clickProcessing(510,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(550,30) //move p1 Commander to tile (13, 0)
+    clickProcessing(910,110) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(870,70) //move p2 Commander to tile (21, 1)
+    clickProcessing(550,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(590,30) //move p1 Commander to tile (14, 0)
+    clickProcessing(870,70) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(830,30) //move p2 Commander to tile (20, 0)
+    clickProcessing(450,700) //select Fireball card
+    clickProcessing(710,30) //select tile (17, 0) for Fireball target
+    if(gameWon == 0){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+function test7(){ //DRAW SCENARIO 2: Commander takes another commander in a defended tile
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //move p1 Commander to tile (1, 0)
+    clickProcessing(1390,590) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1350,550) //move p2 Commander to tile (33, 13)
+    clickProcessing(70,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    clickProcessing(1350,550) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1310,510) //move p2 Commander to tile (32, 12)
+    clickProcessing(110,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(150,30) //move p1 Commander to tile (3, 0)
+    clickProcessing(1310,510) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1270,470) //move p2 Commander to tile (31, 11)
+    clickProcessing(150,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(190,30) //move p1 Commander to tile (4, 0)
+    clickProcessing(1270,470) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1230,430) //move p2 Commander to tile (30, 10)
+    clickProcessing(190,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(230,30) //move p1 Commander to tile (5, 0)
+    clickProcessing(1230,430) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1190,390) //move p2 Commander to tile (29, 9)
+    clickProcessing(230,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(270,30) //move p1 Commander to tile (6, 0)
+    clickProcessing(1190,390) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1150,350) //move p2 Commander to tile (28, 8)
+    clickProcessing(270,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(310,30) //move p1 Commander to tile (7, 0)
+    clickProcessing(1150,350) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1110,310) //move p2 Commander to tile (27, 7)
+    clickProcessing(310,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(350,30) //move p1 Commander to tile (8, 0)
+    clickProcessing(1110,310) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1070,270) //move p2 Commander to tile (26, 6)
+    clickProcessing(350,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(390,30) //move p1 Commander to tile (9, 0)
+    clickProcessing(1070,270) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1030,230) //move p2 Commander to tile (25, 5)
+    clickProcessing(390,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(430,30) //move p1 Commander to tile (10, 0)
+    clickProcessing(1030,230) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(990,190) //move p2 Commander to tile (24, 4)
+    clickProcessing(430,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(470,30) //move p1 Commander to tile (11, 0)
+    clickProcessing(990,190) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(950,150) //move p2 Commander to tile (23, 3)
+    clickProcessing(470,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(510,30) //move p1 Commander to tile (12, 0)
+    clickProcessing(950,150) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(910,110) //move p2 Commander to tile (22, 2)
+    clickProcessing(510,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(550,30) //move p1 Commander to tile (13, 0)
+    clickProcessing(910,110) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(870,70) //move p2 Commander to tile (21, 1)
+    clickProcessing(550,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(590,30) //move p1 Commander to tile (14, 0)
+    clickProcessing(870,70) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(830,30) //move p2 Commander to tile (20, 0)
+    clickProcessing(590,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(630,30) //move p1 Commander to tile (15, 0)
+    clickProcessing(830,30) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(790,30) //move p2 Commander to tile (19, 0)
+    clickProcessing(630,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(670,30) //move p1 Commander to tile (16, 0)
+    clickProcessing(790,30) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(750,30) //move p2 Commander to tile (18, 0)
+    clickProcessing(670,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(710,30) //move p1 Commander to tile (17, 0)
+    clickProcessing(130,700) //select Guard Tower card
+    clickProcessing(750,70) //place Guard Tower at tile (18, 1)
+    //clickProcessing(710,30) //select p1 Commander
+    //clickProcessing(1150,670) //select move
+    //clickProcessing(710,70) //move p2 commander to tile (17, 1)
+    clickProcessing(710,30) //select p1 Commander
+    clickProcessing(1150,730) //select attack
+    clickProcessing(750,30) //p1 Commander targets p2 Commander for attack at tile (18, 0)
+    if(gameWon == 0){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
 function runTests(){ //runs test suite
     outcomes.push(test1())
     resetGame()
@@ -224,6 +433,10 @@ function runTests(){ //runs test suite
     outcomes.push(test4())
     resetGame()
     outcomes.push(test5())
+    resetGame()
+    outcomes.push(test6())
+    resetGame()
+    outcomes.push(test7())
     resetGame()
     drawTestResults()
 }

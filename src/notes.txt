@@ -15,7 +15,9 @@ Refactoring goals:
 Need to put guards on all ranges/relevent so that trying to access tiles outside the map doesn't
 	cause an error
 
+Known error: A Commander being destroyed by a Guard Tower does not result in the game ending. I believe this is because the GT trigger is clobbering the Commander trigger.
 
+DONE-\/
 Needed implementation:
 	It is possible for the game to result in a draw (if both commanders are fireballed, or if a commander moves into a defended tile to take the other commander). 
 	Since we do not have any implementation in place to detect and report this, the way it is currently set up, 
