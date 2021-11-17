@@ -11,6 +11,7 @@ function initialize(){
     map = new Map()
     player1 = new Player(1)
     player2 = new Player(2)
+    log.push("Game Log: ")
     drawTemplate()
 }
 
