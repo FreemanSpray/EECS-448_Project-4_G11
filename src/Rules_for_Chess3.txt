@@ -1,24 +1,34 @@
-Units:
+Units (each has an associated card):
+
 Commander(*)
 	Summon Range: 1 tile
-	Movement: 1 tile in any direction
+	Movement: The Commander moves to target unoccupied tile within 1 tiles any direction
 	Ability: Attacks enemy units in a radius of 1 tile
 	Passive: If captured, you lose the game
 Knight(Kn)
 	Summon Range: 5 tiles 
-	Movement: 3 tiles in any direction
-	Ability: Attacks a 7 tile radius in vertical or horizontal manner.
-	Passive: None available 
+	Movement: The Knight moves to target unoccupied tile within 3 tiles any direction
+	Ability: CHARGE - Attacks a 7 tile radius in vertical or horizontal manner.
 Guard Tower(GT)
 	Summon Range: 3 tiles
 	Movement: No movement after initial placement
-	Ability: Defends a 2 tile radius after initial placement
-	Passive:None available
-	How to destroy: In order to destroy the guard tower, you need to trade a unit that will result in guard tower going offline and not defending the 2 tile radius of initial placement. 
+	Ability: WATCHFUL Defends a 2 tile radius after initial placement
+Assassin(As)
+	Summon range: 5 tiles
+	Movement: Assassin moves to target unoccupied tile within 7 tiles diagonally.
+	Ability: ASSASSINATE - Assassin destroys target unit within 1 tile vertical or horizontal.
+Firebound Apprentice(FS)
+	Summon range: 3 tiles
+	Movement: Firebound Mage moves to target unoccupied tile within 2 tiles vertical or horizontal.
+	Ability: BURN BRIGHT: Firebound Mage enters the battlefield with 5 charge counters. When a charge counter is removed from Firebound Mage, if it has no charge counters, destroy it.
+	Ability: EXPLOSIVE ENTRANCE: Firebound Mage moves to target unoccupied tile within 7 tiles. Destroy each unit within 1 tile of Firebound Mage.
+		Remove one charge counter.
+	Ability: FIREBOLT: Firebound Mage destroys target unit within 3 tiles. Remove 2 charge counters.
 
 
-Cards:   
-Fireball(Fb)
+Non-unit summoning cards:   
+
+Fireball
 	Summon Range: 8 tiles
 	Movement: No movement
 	Ability: The commander can use the card in a radius of 8 tiles. Upon using the card, it destroys in a 3 tile radius of where it was placed. 
@@ -26,8 +36,8 @@ Fireball(Fb)
 
 
 Rules:
-	1. Use an action to play a card. 
-	2. Place your units strategically in order to protect your commander as well as in a way that you have an attack plan to capture the enemy commander.
-	3. Capture of any unit which is not the commander will result in continuation of the game. 
-	4. The units of the enemy team can be captured using abilities of the units or by placing cards which can be done by using the action of the commander. 
-	5. Capture commander results in end of the game, the remaining commander team wins. 
+
+	1. Use your turn either by playing a card from your hand or using an ability of a unit you control.
+	2. Place your units strategically to protect your Commander while seeking to capture the enemy Commander.
+	4. Units can be captured/destroyed by certain abilities and cards. If all means of capturing a Commander other than a Commander itself are expended, the game ends in a draw.
+	5. Capturing a Commander results in that Commander's controlling losing the game. If both Commanders are captured at once, the game will result in a draw. 

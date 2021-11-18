@@ -18,7 +18,7 @@ class Hand{
 
     discard(card){
         let cardIndex = this.cards.indexOf(card)
-        this.cards.splice(cardIndex)
+        this.cards.splice(cardIndex, 1)
     }
 }
 

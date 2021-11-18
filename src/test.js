@@ -2,7 +2,7 @@ let numberOfTests = 7
 let outcomes = []
 let testDescriptions = ["* Player 1 conceding the game results in player 2 winning: ", 
     "* Player 2 taking player 1's Commander results in player 2 winning: ", 
-    "* Taking a Guard Tower with a Knight results in both units being destroyed: ",
+    "* Taking a Guard Tower with a Knight results in only the Guard Tower being destroyed: ",
     "* Placing a Guard Tower near an enemy unit does not result in that unit being destroyed: ",
     "* Moving a unit from one defended tile to another results in that unit being destroyed: ",
     "* Both Commanders being destroyed by the same Fireball results in a draw: ",
@@ -66,7 +66,7 @@ function test2(){ //PlAYER 2 TAKING PLAYER 1's COMMANDER
     return "FAILED"
 }
 
-function test3(){ //MUTUALLY ASSURED DESTRUCTION (Knight takes Guard Tower)
+function test3(){ //NO MUTUALLY ASSURED DESTRUCTION (Knight takes Guard Tower)
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -107,7 +107,7 @@ function test3(){ //MUTUALLY ASSURED DESTRUCTION (Knight takes Guard Tower)
     clickProcessing(590,30) //select p2 Knight
     clickProcessing(1150,730) //select charge
     clickProcessing(390,30) //target p1 Guard Tower with charge
-    if(map.tiles[9][0].unit == null){
+    if(map.tiles[9][0].unit.symbol == "Kn"){
         return "PASSED"
     }
     return "FAILED"
