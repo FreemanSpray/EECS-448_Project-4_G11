@@ -24,4 +24,13 @@ class Tile{
         this.triggers = []
         this.unit = null
     }
+
+    occupied(){
+        if (this.unit != null) {
+            return true
+        }
+        else{
+            return false
+        }
+    }
 }

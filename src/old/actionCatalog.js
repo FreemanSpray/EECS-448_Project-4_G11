@@ -1,12 +1,20 @@
-class Action{
-    constructor(name, range, validTarget, flags, actionFunction){
+class Ability{
+    constructor(name){
+        //Every ability has a name, regardless of type. This includes activated, triggered, and static
         this.name = name
-        this.range = range
-        this.validTarget = validTarget
-        this.flags = flags
-        this.function = actionFunction
     }
+
+    getName(){
+        return this.name
+    }
+
 }
+
+
+
+
+
+
 
 class Flag{
     constructor(flagID, relevantTiles){
@@ -15,70 +23,10 @@ class Flag{
     }
 }
 
-function commanderMove(){
-    let name = "Move"
-    
-    let range = range_radialRange(1)
-    let validTarget = validTarget_unoccupied()
-    let flags = []
-    let flagID1 = "UNIT_MOVETOTILE"
-    function relevantTiles1(target){
-        const width = map.xWidth, height = map.yHeight;
-        const initialVal = false;
 
-        var arr = Array(width);
-        for (var x = 0; x < width; x++) {
-            arr[x] = Array(height).fill(initialVal);
-        }
-
-        arr[target.xPos][target.yPos] = true
-
-        return arr
-    }
-    flags[0] = new Flag(flagID1, relevantTiles1)
-    function actionFunction(source, target, playerID){
-        target.unit = source.unit
-        source.unit = null
-    }
-
-    let action = new Action(name, range, validTarget, flags, actionFunction)
-    return action
-}
-
-function commanderAttack(){
-    let name = "Attack"
-    
-    let range = range_radialRange(1)
-    let validTarget = validTarget_unit()
-    let flags = []
-    let flagID1 = "UNIT_MOVETOTILE"
-    let flagID2 = "UNIT_DESTROYED"
-    function relevantTiles1(target){
-        const width = map.xWidth, height = map.yHeight;
-        const initialVal = false;
-
-        var arr = Array(width);
-        for (var x = 0; x < width; x++) {
-            arr[x] = Array(height).fill(initialVal);
-        }
-
-        arr[target.xPos][target.yPos] = true
-
-        return arr
-    }
-    flags[0] = new Flag(flagID1, relevantTiles1)
-    flags[1] = new Flag(flagID2, relevantTiles1)
-    function actionFunction(source, target, playerID){
-        target.unit = source.unit
-        source.unit = null
-    }
-
-    let action = new Action(name, range, validTarget, flags, actionFunction)
-    return action
-}
 
 function range_radialRange(radius){       //pass in the desired radius and the range function for a radial range will be returned
-    function range(source){
+    function range(){
         const width = map.xWidth, height = map.yHeight;
         const initialVal = false;
 
@@ -87,6 +35,7 @@ function range_radialRange(radius){       //pass in the desired radius and the r
             arr[x] = Array(height).fill(initialVal);
         }
 
+        const source = tileSelected
         const radiusFromCast = radius
         for (let x = -radiusFromCast; x <= radiusFromCast; x++) {
             for (let y = -radiusFromCast; y <= radiusFromCast; y++) {
@@ -584,6 +533,100 @@ function action_fireball(){
                 }                
             }            
         }
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function commanderMove(){
+    let name = "Move"
+    
+    let range = range_radialRange(1)
+    let validTarget = validTarget_unoccupied()
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    function actionFunction(source, target, playerID){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function commanderAttack(){
+    let name = "Attack"
+    
+    let range = range_radialRange(1)
+    let validTarget = validTarget_unit()
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    let flagID2 = "UNIT_DESTROYED"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    flags[1] = new Flag(flagID2, relevantTiles1)
+    function actionFunction(source, target, playerID){
+        target.unit = source.unit
+        source.unit = null
+    }
+
+    let action = new Action(name, range, validTarget, flags, actionFunction)
+    return action
+}
+
+function commanderDraw(){
+    let name = "Draw Card"
+    
+    let range = range_radialRange(0)
+    let validTarget = validTarget_unit()
+    let flags = []
+    let flagID1 = "UNIT_MOVETOTILE"
+    let flagID2 = "UNIT_DESTROYED"
+    function relevantTiles1(target){
+        const width = map.xWidth, height = map.yHeight;
+        const initialVal = false;
+
+        var arr = Array(width);
+        for (var x = 0; x < width; x++) {
+            arr[x] = Array(height).fill(initialVal);
+        }
+
+        arr[target.xPos][target.yPos] = true
+
+        return arr
+    }
+    flags[0] = new Flag(flagID1, relevantTiles1)
+    flags[1] = new Flag(flagID2, relevantTiles1)
+    function actionFunction(source, target, playerID){
+        target.unit = source.unit
+        source.unit = null
     }
 
     let action = new Action(name, range, validTarget, flags, actionFunction)

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 function initialize(){
     map = new Map()
+    stack = new Stack()
     player1 = new Player(1)
     player2 = new Player(2)
     log.push("Game Log: ")
@@ -113,8 +114,10 @@ function actionRounding(x, y){
         for(let i = 0; i < 3; i++){
             if(y > 650 + 60*i && y < 683 + 60*i){
                 actionNum = i + 1
-                if(unitSelected != null){                       //check whether there is currently a unit selected
-                    action = unitSelected.actions[i]            //if so, set action to the action that has been clicked
+                //check whether there is currently a unit selected
+                if(unitSelected != null){                       
+                    let activatedAbilities = unitSelected.getActivatedAbilities()
+                    action = activatedAbilities[i]            //if so, set action to the action that has been clicked
                 }
             }
         }
@@ -145,7 +148,7 @@ function menuRounding(x, y){
     post: determines what section of the board has been clicked, checks gamestate variables if applicable, then performs the appropriate functionality.
 */
 function clickProcessing(x, y){
-    if(actionSelected != null && turn != unitSelected.playerID){
+    if(actionSelected != null && turn != unitSelected.owner.playerID){
         alert("That's not your unit!")
         actionSelected = null
         unitSelected = null
@@ -185,6 +188,32 @@ function tileClicked(tile) {
     if(actionSelected == null){                 //if there is no action currently selected, select the tile and the unit on the tile
         selectTile(tile)
     }
+    else if(cardSelected != null) {
+        if (cardSelected.play(tile)) {
+            passTurn()
+        }
+        else {
+            console.log("Card was not played")
+            unitSelected = null
+            actionSelected = null
+            cardSelected = null
+            selectTile(tile)
+        }
+    }
+    else if(cardSelected == null && actionSelected != null) {
+        if (actionSelected.activate(tile)) {
+            passTurn()
+        }
+        else {
+            console.log("Ability was not activated")
+            unitSelected = null
+            actionSelected = null
+            cardSelected = null
+            selectTile(tile)
+        }
+    }
+
+    /*
     else {
         let validTargetSelected = actionSelected.validTarget(tileSelected, actionSelected.range, tile)
         if(validTargetSelected){
@@ -197,6 +226,7 @@ function tileClicked(tile) {
             selectTile(tile)
         }
     }
+    */
 }
 
 /*   
@@ -222,7 +252,7 @@ function cardClicked(card) {
     else {
         selectTile(findCommander())             //set selected tile to where commander is
         cardSelected = card                     //update cardSelected
-        actionSelected = card.action            //update actionSelected
+        actionSelected = card.ability           //update actionSelected
     }
 }
 
@@ -252,3 +282,19 @@ document.addEventListener("click", e => {
         }
     }
 })
+
+/*
+    post: resets gamestate variables to null and passes the turn to player 2.
+*/
+function passTurn(){
+    while (stack.isEmpty() == false) {
+        stack.resolveTop()
+    }
+
+
+    tileSelected = null
+    unitSelected = null
+    actionSelected = null
+    cardSelected = null
+    turn = (turn % 2) + 1
+}

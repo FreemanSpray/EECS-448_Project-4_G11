@@ -1,53 +1,57 @@
-1 Guard Tower
-	Summon range: x tiles
+Guard Tower
+	Summon range: 4 tiles
 
-	Movement: None
-
-	Ability: Defends tiles within a radius of x
+	Watchful Eye: When a unit an opponent controls moves to within 2 tiles of Guard Tower, destroy that unit.
 
 
-2 Knight
-	Summon range: x tiles
+Knight
+	Summon range: 3 tiles
 
-	Movement: Any tile within range x
+	Move: Knight moves to target unoccupied tile within 3 tiles vertical or horizontal.
 
-	Ability: Can move to take a unit directly vertical or horizontal up to x tiles
-
-
-3 Assassin 
-	Summon range: x tiles, every tile outside this range adds a turn that the unit must stay dormant after
-			being summoned
-
-	Movement: Any tile within range x
-
-	Ability: Cannot target units in defended tiles, attacks diagonally x tiles
+	Charge: Destroy target unit within 6 tiles vertical or horizontal of Knight. If the unit is destroyed this way, Knight moves to that tile.
 
 
-4 Wizard
-	Summon range: x tiles
+Assassin 
+	Summon range: 5 tiles
 
-	Movement: 	Any tile within range x
-			Teleports anywhere not within x tiles of enemy unit, uses a charge
+	Move: Assassin moves to target unoccupied tile within 7 tiles diagonally.
 
-	Abilities: Starts with x charges. When all charges are consumed, the unit dies
-			Fireball, target tile within range x, destroys each unit in a x radius from target tile, uses a charge
-			Mysterious Fog Bank, x tiles in a line are defended for x turns, uses a charge
-			
+	Assassinate: Assassin destroys target unit within 1 tile vertical or horizontal.
 
 
-5 Ethereal Ward
-	Target: Unit within x range
+Firebound Apprentice
+	Summon range: 3 tiles
 
-	Ability: Prevents the next attack on target unit
+	Burn Bright: Firebound Mage enters the battlefield with 5 charge counters. When a charge counter is removed from Firebound Mage, if it has no charge counters, destroy it.
+
+	Move: Firebound Mage moves to target unoccupied tile within 2 tiles vertical or horizontal.
+
+	Explosive Entrance: Firebound Mage moves to target unoccupied tile within 7 tiles. Destroy each unit within 1 tile of Firebound Mage.
+		Remove one charge counter.
+
+	Firebolt: Firebound Mage destroys target unit within 3 tiles. Remove 2 charge counters.
 
 
-6 Magical Landmine
-	Target: Tile within x range
+Ethereal Ward
+	Target non-commander unit within 5 tiles gains Warded.
 
-	Ability: Tile gains defended, but is not revealed to the opponent
+	Warded: If this unit would be destroyed, it instead loses Warded.
 
 
-7 Now You See Me
-	Target: Unit within x range
+Magical Landmine
+	Summon range: 10 tiles
 
-	Ability: Unit gains invisibility for x turns, wears off if an ability is used
+	Trap: This unit does not occupy a tile and is not visible on the map.
+
+	Kaboom: When a unit moves to this tile, Magical Landmine destroys itself, that unit, and each unit within 2 tiles.
+
+Curse
+	Place 5 Death Toll counters on target unit.
+
+Indiscriminate Wrath
+	Target tile within 6 tiles. Destroy each unit within 2 tiles of target tile.
+
+Hocus Pocus
+	Target unit moves to a random unoccupied tile.
+
