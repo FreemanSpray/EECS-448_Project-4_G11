@@ -2,7 +2,17 @@ for programming our game, we need a stack
 
 in mtg 4 players use a card based data set to make calls to the stack, which set off triggers that STACK more calls
 then other players each have a turn of priority, during which they can perform certain actions in response (we should totally
-have instant speed cards) once all players pass priority in order, the stack resolves, top to bottom, with certain calls having effects on those beneath them and the overall data set is changed.
+have instant speed cards) once all players pass priority in order, whatever is on the top of the stack resolves. Certain calls
+can have effects on those beneath them. When a call resolves, the overall data set is changed.
+
+We should implement a stack in our game, with some changes. First, since turns are simpler, we can say that a player's turn consists
+of choosing a call to add to the top of the stack. If the stack is empty and it is your turn, you have to choose something. If there
+are calls already, you may pass your turn without adding a call. If both/all players choose to pass without adding a call, the stack
+resolves. To simplify things, I think that the stack should resolve all the way at this point unless there are triggers activated.
+
+Call vs Base Call
+	essentially instant vs sorcery speed, a base call can only be played when the stack is empty, while calls can be added on top of
+	any other call
 
 from the computer's perspective, each call on the stack should be checked with each and every other entity in the game
 
@@ -94,8 +104,6 @@ calls
 		how much of a resource to use
 			how many calls added to stack
 			scale of the effect
-nah	can be grouped? (such that multiple calls are essentially on the same 'level' of the stack
-		example - one call's resolution destroys multiple units at once, which calls some trigger multiple times all 			at once
 	can have conditions associated
 		conditions are checked before being put on stack, and as they are resolved off the top
 			conditions being met puts a call on stack, then players have a chance to respond and add more calls 			in an attempt to change the conditions before it resolves
@@ -111,4 +119,27 @@ stuff
 
 
 
+Classes:
+	Stack
+		attributes:
+			calls: ordered array of calls
+		methods:
+			push(call)
+			resolve()
+			getCalls(): calls
+	Call
+		attributes:
+			conditions
+			target(s)
+			event(s)
+		methods:
+			resolve()
+			
 
+
+Events:
+	this unit moves to target tile
+	this unit destroys target unit
+	destroy target unit
+	sacrifice target unit
+	draw x card(s)

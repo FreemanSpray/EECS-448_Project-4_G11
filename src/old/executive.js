@@ -2,6 +2,11 @@
     post: resets gamestate variables to null and passes the turn to player 2.
 */
 function passTurn(){
+    while (stack.isEmpty() == false) {
+        stack.resolveTop()
+    }
+
+
     tileSelected = null
     unitSelected = null
     actionSelected = null
