@@ -1,4 +1,3 @@
-
 class Unit{
     constructor(symbol, description, actions, triggers, playerID){
         this.symbol = symbol

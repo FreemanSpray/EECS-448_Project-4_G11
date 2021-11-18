@@ -168,8 +168,8 @@ function drawActions() {
         ctx.rect(90, 25 + yCoord, 300, 30);
         ctx.stroke();
         if(unitSelected != null){
-            if(unitSelected.actions[i] != null){
-                ctx.fillText(unitSelected.actions[i].name, 95, 50 + yCoord, 90)
+            if(unitSelected.getActivatedAbilities()[i] != null){
+                ctx.fillText(unitSelected.getActivatedAbilities()[i].tag, 95, 50 + yCoord, 90)
             }
         }
     }
@@ -180,7 +180,7 @@ function drawActions() {
     post:   tiles within range of the selected action or card are highlighted
 */
 function highlightTiles_ActionRange() {
-    actionRange = actionSelected.range(tileSelected)
+    actionRange = actionSelected.getRange()
 
     for (let x = 0; x < map.xWidth; x++) {
         for (let y = 0; y < map.yHeight; y++) {
