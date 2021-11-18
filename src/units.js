@@ -55,7 +55,7 @@ function initializeUnit(unit) {
     else if (name == "Commander") {
         unit.symbol = "*"
         unit.text = ``
-        unit.abilities = [new ActivatedAbility("Commander: Move", unit), new ActivatedAbility("Commander: Attack", unit), new ActivatedAbility("Commander: Draw Card", unit), new TriggeredAbility("Commander: Death", unit)]
+        unit.abilities = [new ActivatedAbility("Commander: Move", unit), new ActivatedAbility("Commander: Attack", unit), new TriggeredAbility("Commander: Death", unit)]
     }
 
     else if (name == "Knight") {
