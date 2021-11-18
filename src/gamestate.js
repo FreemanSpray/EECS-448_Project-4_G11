@@ -16,6 +16,7 @@ function resetGame(){
     actionSelected = null
     cardSelected = null
     gameWon = null
+    log = []
     initialize()
 }
 
