@@ -42,6 +42,9 @@ class summon_unit extends Event{
     
     doEvent(){
         this.targetTile.unit = this.summonedUnit
+
+        let message = this.summonedUnit.name + " was summoned"
+        log.push(message)
     }
 }
 
@@ -55,6 +58,9 @@ class destroy_unit extends Event{
 
     doEvent(){
         this.targetTile.unit = null
+
+        let message = this.sourceAbility.sourceUnit.name + " destroyed " + this.destroyedUnit.name + " with " + this.sourceAbility.name
+        log.push(message)
     }
 }
 
@@ -71,6 +77,9 @@ class move_unit extends Event{
         //map.tiles[this.tileTo.xPos][this.tileTo.yPos].
         this.tileTo.unit = this.movedUnit
         this.tileFrom.unit = null
+
+        let message = this.movedUnit.name + " moved"
+        log.push(message)
     }
 }
 

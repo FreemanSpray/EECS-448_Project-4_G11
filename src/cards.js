@@ -14,7 +14,6 @@ class Card{
     play(targetTile){
         if (this.ability.activate(targetTile)) {
             //remove card from hand
-            //pass turn
             return true
         }
         else {

@@ -13,6 +13,7 @@ function initialize(){
     player1 = new Player(1)
     player2 = new Player(2)
     log.push("Game Log: ")
+    log.push("Player 1 turn:")
     drawTemplate()
 }
 
@@ -297,4 +298,7 @@ function passTurn(){
     actionSelected = null
     cardSelected = null
     turn = (turn % 2) + 1
+
+    let message = "Player " + turn + " turn:"
+    log.push(message)
 }
