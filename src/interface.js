@@ -34,6 +34,12 @@ function drawLog()
     ctx.clearRect(0, 0, 2000, 2000);
     ctx.font = "12px Georgia";
 
+    if (log.length > 41) {
+        let deltaLength = log.length - 41
+
+        log.splice(0, deltaLength)
+    }
+
     // draw the log on the screen
     for(var i = 0; i < log.length;i++)
     {
