@@ -14,6 +14,7 @@ class Card{
     play(targetTile){
         if (this.ability.activate(targetTile)) {
             //remove card from hand
+            //this.owner.hand.discard(this)
             return true
         }
         else {
@@ -51,5 +52,15 @@ function initializeCard(card){
     else if (name == "Fireball") {
         card.text = ``
         card.ability = new ActivatedAbility("Fireball", card.owner.commander)
+    }
+
+    else if (name == "Assassin") {
+        card.text = ``
+        card.ability = new ActivatedAbility("Assassin: Summon", card.owner.commander)
+    }
+
+    else if (name == "Firebound Apprentice") {
+        card.text = ``
+        card.ability = new ActivatedAbility("Firebound Apprentice: Summon", card.owner.commander)
     }
 }

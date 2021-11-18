@@ -4,6 +4,7 @@ class Player{
         this.commander = new Unit("Commander", this)
         map.tiles[0 + 34*(playerID - 1)][0 + 14*(playerID - 1)].unit = this.commander                        //placing commander on appropriate starting square (top left for p1, bottom right for p2)
        
+        this.deck = new Deck(this)
         this.hand = new Hand(this)
     }
 }

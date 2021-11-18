@@ -30,19 +30,29 @@ class ActivatedAbility {
         let met = true
 
         if (this.conditions.includes("One Charge Counter")) {
-            let counters = [...this.sourceUnit.counters]
-            counters.filter("Charge")
-            let charges = counters.length
+            let charges = 0
+            this.sourceUnit.counters.forEach(counter => {
+                if (counter == "Charge") {
+                    charges++
+                }
+            });
+            
             if (charges < 1) {
                 met = false
+                log.push("Not enough Charge counters")
             }
         }
         if (this.conditions.includes("Two Charge Counters")) {
-            let counters = [...this.sourceUnit.counters]
-            counters.filter("Charge")
-            let charges = counters.length
+            let charges = 0
+            this.sourceUnit.counters.forEach(counter => {
+                if (counter == "Charge") {
+                    charges++
+                }
+            });
+
             if (charges < 2) {
                 met = false
+                log.push("Not enough Charge counters")
             }
         }
 
@@ -53,21 +63,29 @@ class ActivatedAbility {
     targetConditionsMet(targetTile){
         let valid = true
 
+        if (this.getRange()[targetTile.xPos][targetTile.yPos] == false) {
+            valid = false
+            log.push("out of range")
+        }
         if (this.targetConditions.includes("unoccupied") && targetTile.occupied() == true) {
             valid = false
-            console.log("tile occupied")
+            log.push("tile occupied")
         }
         if (this.targetConditions.includes("unit") && targetTile.unit == null) {
             valid = false
+            log.push("not a unit")
         }
         if (this.targetConditions.includes("ally") && targetTile.unit.playerID != this.sourceUnit.playerID) {
             valid = false
+            log.push("not an allied unit")
         }
         if (this.targetConditions.includes("enemy") && targetTile.unit.playerID == this.sourceUnit.playerID) {
             valid = false
+            log.push("not an enemy unit")
         }
         if (this.targetConditions.includes("non-commander") && targetTile.unit.name == "Commander") {
             valid = false
+            log.push("tile occupied")
         }
 
         //console.log("valid = ", valid)
@@ -223,23 +241,89 @@ function initializeActivatedAbility(ability){
 
 
     else if (name == "Assassin: Summon") {
+        ability.tag = "Assassin"
+        ability.rangeType = "radial"
+        ability.range = 5
+        ability.targetConditions = ["unoccupied"]
+        ability.conditions = []
         
+        function resolve(){
+            let assassin = new Unit("Assassin", this.sourceUnit.owner)
+            let event = new summon_unit(this, assassin, this.targetTile)
+            event.execute()
+        }
+        ability.resolve = resolve
     }
     else if (name == "Assassin: Move") {
+        ability.tag = "Move"
+        ability.rangeType = "diagonal"
+        ability.range = 7
+        ability.targetConditions = ["unoccupied"]
+        ability.conditions = []
         
+        function resolve(){
+            let event
+
+            event = new move_unit(this, this.sourceUnit, this.sourceTile, this.targetTile)
+            event.execute()
+        }
+        ability.resolve = resolve
     }
     else if (name == "Assassin: Assassinate") {
+        ability.tag = "Assassinate"
+        ability.rangeType = "straight"
+        ability.range = 1
+        ability.targetConditions = ["unit"]
+        ability.conditions = []
         
+        function resolve(){
+            let event
+
+            event = new destroy_unit(this, this.targetTile)
+            event.execute()
+        }
+        ability.resolve = resolve
     }
 
 
     else if (name == "Firebound Apprentice: Summon") {
+        ability.tag = "Firebound Apprentice"
+        ability.rangeType = "radial"
+        ability.range = 3
+        ability.targetConditions = ["unoccupied"]
+        ability.conditions = []
         
+        function resolve(){
+            let event
+
+            let unit = new Unit("Firebound Apprentice", this.sourceUnit.owner)
+            event = new summon_unit(this, unit, this.targetTile)
+            event.execute()
+
+            for (let i = 0; i < 5; i++) {
+                event = new place_counter_on_unit(this, "Charge", unit)
+                event.execute()
+            }
+        }
+        ability.resolve = resolve
     }
     else if (name == "Firebound Apprentice: Move") {
+        ability.tag = "Move"
+        ability.rangeType = "straight"
+        ability.range = 2
+        ability.targetConditions = ["unoccupied"]
+        ability.conditions = []
         
+        function resolve(){
+            let event
+
+            event = new move_unit(this, this.sourceUnit, this.sourceTile, this.targetTile)
+            event.execute()
+        }
+        ability.resolve = resolve
     }
     else if (name == "Firebound Apprentice: Explosive Entrance") {
+        ability.tag = "Explosive Entrance"
         ability.rangeType = "radial"
         ability.range = 7
         ability.targetConditions = ["unoccupied"]
@@ -258,19 +342,36 @@ function initializeActivatedAbility(ability){
                 }
             }
 
-            event = new move_unit(this.sourceUnit, this.sourceTile, this.targetTile)
+            event = new move_unit(this, this.sourceUnit, this.sourceTile, this.targetTile)
             event.execute()
             
-            event = new remove_counter_from_unit("Charge", this.sourceUnit)
+            event = new remove_counter_from_unit(this, "Charge", this.sourceUnit)
+            event.execute()
             event.execute()
 
-            event = new remove_counter_from_unit("Charge", this.sourceUnit)
-            event.execute()
+            //event = new remove_counter_from_unit(this, "Charge", this.sourceUnit)
+            event.checkForTriggers()
         }
         ability.resolve = resolve
     }
     else if (name == "Firebound Apprentice: Firebolt") {
+        ability.tag = "Firebolt"
+        ability.rangeType = "radial"
+        ability.range = 7
+        ability.targetConditions = ["unit"]
+        ability.conditions = ["One Charge Counter"]
         
+        function resolve(){
+            let event
+        
+            event = new destroy_unit(this, this.targetTile)
+            event.execute()
+            
+            event = new remove_counter_from_unit(this, "Charge", this.sourceUnit)
+            event.execute()
+            event.checkForTriggers()
+        }
+        ability.resolve = resolve
     }
 
 

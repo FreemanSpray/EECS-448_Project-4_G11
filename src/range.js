@@ -47,5 +47,23 @@ function straightRange(source, range){
 }
 
 function diagonalRange(sourceTile, range){
+    const width = map.xWidth, height = map.yHeight;
+    const initialVal = false;
 
+    var arr = Array(width);
+    for (var x = 0; x < width; x++) {
+        arr[x] = Array(height).fill(initialVal);
+    }
+
+    for (let x = 0; x < map.xWidth; x++) {
+        for (let y = 0; y < map.yHeight; y++) {
+            let deltaX = Math.abs(sourceTile.xPos - x)
+            let deltaY = Math.abs(sourceTile.yPos - y)
+            if (deltaX == deltaY && deltaX <= range) {
+                arr[x][y] = true
+            }
+        }
+    }
+
+    return arr
 }

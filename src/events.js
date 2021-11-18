@@ -59,7 +59,7 @@ class destroy_unit extends Event{
     doEvent(){
         this.targetTile.unit = null
 
-        let message = this.sourceAbility.sourceUnit.name + " destroyed " + this.destroyedUnit.name + " with " + this.sourceAbility.name
+        let message = this.sourceAbility.sourceUnit.name + " destroyed " + this.destroyedUnit.name + " with " + this.sourceAbility.tag
         log.push(message)
     }
 }
@@ -93,6 +93,9 @@ class place_counter_on_unit extends Event{
 
     doEvent(){
         this.unit.counters.push(this.counterType)
+
+        let message = this.counterType + " counter placed on " + this.unit.name
+        log.push(message)
     }
 }
 
@@ -105,8 +108,11 @@ class remove_counter_from_unit extends Event{
     }
 
     doEvent(){
-        counterIndex = this.unit.counters.indexOf(this.counterType)
-        this.unit.counters.splice(counterIndex)
+        let counterIndex = this.unit.counters.indexOf(this.counterType)
+        this.unit.counters.splice(counterIndex, 1)
+
+        let message = this.counterType + " counter removed from " + this.unit.name
+        log.push(message)
     }
 }
 

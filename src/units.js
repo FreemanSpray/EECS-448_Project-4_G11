@@ -5,6 +5,7 @@ class Unit {
         this.owner = owner
         this.symbol
         this.text
+        this.counters = []
         this.abilities = []
         initializeUnit(this)
     }
@@ -68,5 +69,16 @@ function initializeUnit(unit) {
         unit.text = ``
         unit.abilities = [new TriggeredAbility("Guard Tower: Watchful Eye", unit)]
     }
-    
+
+    else if (name == "Assassin") {
+        unit.symbol = "As"
+        unit.text = ``
+        unit.abilities = [new ActivatedAbility("Assassin: Move", unit), new ActivatedAbility("Assassin: Assassinate", unit)]
+    }
+
+    else if (name == "Firebound Apprentice") {
+        unit.symbol = "FA"
+        unit.text = ``
+        unit.abilities = [new ActivatedAbility("Firebound Apprentice: Move", unit), new ActivatedAbility("Firebound Apprentice: Explosive Entrance", unit), new ActivatedAbility("Firebound Apprentice: Firebolt", unit), new TriggeredAbility("Firebound Apprentice: Burn Bright", unit)]
+    }
 }
