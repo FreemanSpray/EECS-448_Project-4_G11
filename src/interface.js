@@ -109,20 +109,32 @@ function drawCards() {
     for (var i = 80; i <= 704; i = i + 156) {
         ctx.rect(i, 20, 100, 150);      //top left corner is at [i, 20] then [width, height]
         ctx.stroke();
+        var lines;
 
         if(turn == 1 && j < player1.hand.cards.length)
         {
             ctx.font = "bold 12pt Verdana";
             ctx.fillText(player1.hand.cards[j].name, i + 2, 37, 95);
             ctx.font = "8pt Verdana";
-            ctx.fillText(player1.hand.cards[j].text, i + 2, 60, 95);
+            
+            lines = player1.hand.cards[j].text.split(`\n`);
+            for(var k = 0; k < lines.length; k++)
+            {
+                ctx.fillText(lines[k], i + 2, 60 + (k*9), 95);
+            }
         }
         else if (turn == 2 && j < player2.hand.cards.length)
         {
             ctx.font = "bold 12pt Verdana";
             ctx.fillText(player2.hand.cards[j].name, i + 2, 37, 95);
             ctx.font = "8pt Verdana";
-            ctx.fillText(player2.hand.cards[j].text, i + 2, 60, 95);
+
+            lines = player2.hand.cards[j].text.split(`\n`);
+            for(var k = 0; k < lines.length; k++)
+            {
+                ctx.fillText(lines[k], i + 2, 60 + (k*9), 95);
+            }
+            //ctx.fillText(player2.hand.cards[j].text, i + 2, 60, 95);
         }
         j++
     }
