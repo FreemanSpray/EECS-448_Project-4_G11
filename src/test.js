@@ -1,4 +1,4 @@
-let numberOfTests = 7
+let numberOfTests = 13
 let outcomes = []
 let testDescriptions = ["* Player 1 conceding the game results in player 2 winning: ", 
     "* Player 2 taking player 1's Commander results in player 2 winning: ", 
@@ -6,9 +6,18 @@ let testDescriptions = ["* Player 1 conceding the game results in player 2 winni
     "* Placing a Guard Tower near an enemy unit does not result in that unit being destroyed: ",
     "* Moving a unit from one defended tile to another results in that unit being destroyed: ",
     "* Both Commanders being destroyed by the same Fireball results in a draw: ",
-    "* One Commander sacrificing itself to destroy the other results in a draw: "]
+    "* One Commander sacrificing itself to destroy the other results in a draw: ",
+    "* A unit cannot move onto a tile occupied by another unit: ",
+    "* A unit cannot be summoned onto a tile occupied by another unit: ",
+    "* A unit cannot be summoned onto a tile outside of its summon range: ",
+    "* Playing a card causes it to be removed from the hand: ",
+    "* One player playing a card does not impact the hand of the other player: ",
+    "* A unit cannot move to a tile outside of its movement range: "]
 
-function test1(){ //PlAYER 1 CONCEDING THE GAME
+/*   
+    post:   passes if player 1 conceding by having their commander attack itself results in player 2 winning the game.
+*/
+function test1(){
     clickProcessing(30,30) //select p1 commander
     clickProcessing(1150,730) //select attack
     clickProcessing(30,30) //target commander with its own attack
@@ -18,7 +27,10 @@ function test1(){ //PlAYER 1 CONCEDING THE GAME
     return "FAILED"
 }
 
-function test2(){ //PlAYER 2 TAKING PLAYER 1's COMMANDER
+/*   
+    post:   passes if player 2 taking player 1's commander results in player 2 winning the game.
+*/
+function test2(){
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -66,7 +78,10 @@ function test2(){ //PlAYER 2 TAKING PLAYER 1's COMMANDER
     return "FAILED"
 }
 
-function test3(){ //NO MUTUALLY ASSURED DESTRUCTION (Knight takes Guard Tower)
+/*   
+    post:   passes if a knight taking a guard tower does not result in the knight being destroyed
+*/
+function test3(){
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -113,7 +128,10 @@ function test3(){ //NO MUTUALLY ASSURED DESTRUCTION (Knight takes Guard Tower)
     return "FAILED"
 }
 
-function test4(){ //A DELICATE POSITION (Placing Guard Tower near an enemy unit does not destroy it)
+/*   
+    post:   passes if placing a guard tower near an enemy unit does not destroy that unit.
+*/
+function test4(){
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -163,7 +181,11 @@ function test4(){ //A DELICATE POSITION (Placing Guard Tower near an enemy unit 
     return "FAILED"
 }
 
-function test5(){ //A DELICATE POSITION CONTINUED (Moving into a defended tile following the same path as test 4 destroys the knight)
+
+/*   
+    post:   passes if a knight moving from the position test 4 ends in to another tile guarded by the guard tower results in the knight being destroyed.
+*/
+function test5(){
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -216,7 +238,10 @@ function test5(){ //A DELICATE POSITION CONTINUED (Moving into a defended tile f
     return "FAILED"
 }
 
-function test6(){ //DRAW SCENARIO 1: Both Commanders destroyed by a Fireball
+/*   
+    post:   passes if both commanders being destroyed by a fireball results in a draw.
+*/
+function test6(){
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -309,7 +334,10 @@ function test6(){ //DRAW SCENARIO 1: Both Commanders destroyed by a Fireball
     return "FAILED"
 }
 
-function test7(){ //DRAW SCENARIO 2: Commander takes another commander in a defended tile
+/*   
+    post:   passes if a commander taking the other commander then being destroyed by a guard tower results in a draw.
+*/
+function test7(){
     clickProcessing(30,30) //select p1 Commander
     clickProcessing(1150,670) //select move
     clickProcessing(70,30) //move p1 Commander to tile (1, 0)
@@ -423,7 +451,102 @@ function test7(){ //DRAW SCENARIO 2: Commander takes another commander in a defe
     return "FAILED"
 }
 
-function runTests(){ //runs test suite
+/*   
+    post:   passes if attempting to move a unit onto an occupied tile does not change the unit on either the target tile or the source tile
+*/
+function test8(){
+    clickProcessing(130,700) //select Guard Tower
+    clickProcessing(70,30) //place Guard Tower at tile (1,0)
+    clickProcessing(1390,590) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1350,550) //move p2 Commander to tile (33, 13)
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(70,30) //attempt to move p1 Commander to tile (1, 0)
+    if(map.tiles[0][0].unit.symbol == "*" && map.tiles[1][0].unit.symbol == "GT"){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+/*   
+    post: passes if placing a unit on an occupied tile does not change the unit on the tile.
+*/
+function test9(){ //Playing a unit causes it to be removed from 
+    clickProcessing(130,700) //select Guard Tower
+    clickProcessing(70,30) //place Guard Tower at tile (1,0)
+    clickProcessing(1390,590) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1350,550) //move p2 Commander to tile (33, 13)
+    clickProcessing(130,700) //select Knight
+    clickProcessing(70,30) //place Knight at tile (1,0)
+    if(map.tiles[1][0].unit.symbol == "GT"){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+/*   
+    post: passes if placing a unit outside of its summon range does not result in a unit being placed.
+*/
+function test10(){ //Playing a unit causes it to be removed from 
+    clickProcessing(130,700) //select Guard Tower
+    clickProcessing(1350,550) //place Guard Tower at tile (33, 13)
+    if(map.tiles[33][13].unit == null){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+/*   
+    post: passes if a player playing the Summon Guard Tower card causes that card to be removed from that player's hand, moving the Summon Knight card to be the first card on the left.
+*/
+function test11(){ //Playing a unit causes it to be removed from 
+    clickProcessing(130,700) //select Guard Tower
+    clickProcessing(70,30) //place Guard Tower at tile (1,0)
+    clickProcessing(1390,590) //select p2 Commander 
+    clickProcessing(1150,670) //select move
+    clickProcessing(1350,550) //move p2 Commander to tile (33, 13)
+    clickProcessing(130,700) //select Knight
+    clickProcessing(110,30) //place Knight at tile (2,0)
+    if(map.tiles[1][0].unit.symbol == "GT" && map.tiles[2][0].unit.symbol == "Kn"){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+/*   
+    post: passes if a player playing a card does not impact the cards in the other player's hand.
+*/
+function test12(){ //Playing a unit causes it to be removed from 
+    clickProcessing(130,700) //select Guard Tower
+    clickProcessing(70,30) //place Guard Tower at tile (1,0)
+    clickProcessing(130,700) //select Guard Tower
+    clickProcessing(1350,550) //place Guard Tower at tile (33, 13)
+    if(map.tiles[33][13].unit.symbol == "GT"){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+/*   
+    post: passes if attempting to move a unit outside of its movement range results in the unit remaining where it is and not being moved to the new tile.
+*/
+function test13(){ //Playing a unit causes it to be removed from 
+    clickProcessing(30,30) //select p1 Commander
+    clickProcessing(1150,670) //select move
+    clickProcessing(110,30) //move p1 Commander to tile (2, 0)
+    if(map.tiles[0][0].unit.symbol == "*" && map.tiles[2][0].unit == null){
+        return "PASSED"
+    }
+    return "FAILED"
+}
+
+
+/*   
+    post:   runs test suite.
+*/
+function runTests(){
     outcomes.push(test1())
     resetGame()
     outcomes.push(test2())
@@ -437,6 +560,18 @@ function runTests(){ //runs test suite
     outcomes.push(test6())
     resetGame()
     outcomes.push(test7())
+    resetGame()
+    outcomes.push(test8())
+    resetGame()
+    outcomes.push(test9())
+    resetGame()
+    outcomes.push(test10())
+    resetGame()
+    outcomes.push(test11())
+    resetGame()
+    outcomes.push(test12())
+    resetGame()
+    outcomes.push(test13())
     resetGame()
     drawTestResults()
 }
@@ -459,11 +594,11 @@ function runTests(){ //runs test suite
 //clickProcessing(1150,670) //-- action 1
 //clickProcessing(1150,730) //-- action 2
 //clickProcessing(1150,790) //-- action 3
-//clickProcessing(130,700) //-- Guard Tower card
-//clickProcessing(290,700) //-- Knight card
-//clickProcessing(450,700) //-- Fireball card
-//clickProcessing(610,700) //-- null
-//clickProcessing(770,700) //-- null
+//clickProcessing(130,700) //-- card 1
+//clickProcessing(290,700) //-- card 2
+//clickProcessing(450,700) //-- card 3
+//clickProcessing(610,700) //-- card 4
+//clickProcessing(770,700) //-- card 5
 //clickProcessing(30,30) //-- tile (0,0)
 //clickProcessing(70,30) //-- tile (1,0)
 //clickProcessing(110,30) //-- tile (2,0)
