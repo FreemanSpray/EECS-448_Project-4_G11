@@ -381,6 +381,7 @@ function initializeActivatedAbility(ability){
 
 
     else if (name == "Fireball") {
+        ability.tag = "Fireball"
         ability.rangeType = "radial"
         ability.range = 8
         ability.targetConditions = []
