@@ -9,6 +9,10 @@ class Player{
     }
 }
 
+/*   
+    pre:    a card has been selected
+    post:   returns the location of the Commander for use in determining the tiles the card can be used on (since they are dependent on the Commander's position)
+*/
 function findCommander() {
     for (let x = 0; x < map.xWidth; x++) {                              //loop through map x coords
         for (let y = 0; y < map.yHeight; y++) {                         //loop through map y coords

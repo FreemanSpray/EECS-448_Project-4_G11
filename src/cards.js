@@ -14,7 +14,7 @@ class Card{
     play(targetTile){
         if (this.ability.activate(targetTile)) {
             //remove card from hand
-            //this.owner.hand.discard(this)
+            this.owner.hand.discard(this)
             return true
         }
         else {
