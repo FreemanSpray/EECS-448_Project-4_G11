@@ -12,18 +12,18 @@ Knight(Kn)
 Guard Tower(GT)
 	Summon Range: 3 tiles
 	Movement: No movement after initial placement
-	Ability: WATCHFUL Defends a 2 tile radius after initial placement
+	Ability: WATCHFUL EYE - Defends a 2 tile radius after initial placement
 Assassin(As)
 	Summon range: 5 tiles
 	Movement: Assassin moves to target unoccupied tile within 7 tiles diagonally.
-	Ability: ASSASSINATE - Assassin destroys target unit within 1 tile vertical or horizontal.
+	Ability: ASSASSINATE - Assassin destroys target unit within 2 tiles diagonally.
 Firebound Apprentice(FS)
 	Summon range: 3 tiles
 	Movement: Firebound Mage moves to target unoccupied tile within 2 tiles vertical or horizontal.
 	Ability: BURN BRIGHT: Firebound Mage enters the battlefield with 5 charge counters. When a charge counter is removed from Firebound Mage, if it has no charge counters, destroy it.
 	Ability: EXPLOSIVE ENTRANCE: Firebound Mage moves to target unoccupied tile within 7 tiles. Destroy each unit within 1 tile of Firebound Mage.
-		Remove one charge counter.
-	Ability: FIREBOLT: Firebound Mage destroys target unit within 3 tiles. Remove 2 charge counters.
+		Remove 2 charge counters.
+	Ability: FIREBOLT: Firebound Mage destroys target unit within 3 tiles. Remove 1 charge counter.
 
 
 Non-unit summoning cards:   
