@@ -50,7 +50,7 @@ function initializeCard(card){
     }
 
     else if (name == "Assassin") {
-        card.text = `Assassinate: Assassin\n destroys target unit\n within 1 tile vertical\n or horizontal.`
+        card.text = `Assassinate: Assassin\n destroys target unit\n within 2 tile vertical\n or horizontal.`
         card.ability = new ActivatedAbility("Assassin: Summon", card.owner.commander)
     }
 
