@@ -271,8 +271,8 @@ function initializeActivatedAbility(ability){
     }
     else if (name == "Assassin: Assassinate") {
         ability.tag = "Assassinate"
-        ability.rangeType = "straight"
-        ability.range = 1
+        ability.rangeType = "diagonal"
+        ability.range = 2
         ability.targetConditions = ["unit"]
         ability.conditions = []
         

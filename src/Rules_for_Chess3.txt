@@ -2,35 +2,34 @@ Units (each has an associated card):
 
 Commander(*)
 	Summon Range: 1 tile
-	Movement: The Commander moves to target unoccupied tile within 1 tiles any direction
-	Ability: Attacks enemy units in a radius of 1 tile
-	Passive: If captured, you lose the game
+	Movement: The Commander moves to target unoccupied tile within 1 tile any direction.
+	Ability: Attacks enemy units in a radius of 1 tile.
+	Passive: If captured, you lose the game.
 Knight(Kn)
 	Summon Range: 5 tiles 
-	Movement: The Knight moves to target unoccupied tile within 3 tiles any direction
+	Movement: The Knight moves to target unoccupied tile within 3 tiles any direction.
 	Ability: CHARGE - Attacks a 7 tile radius in vertical or horizontal manner.
 Guard Tower(GT)
 	Summon Range: 3 tiles
-	Movement: No movement after initial placement
-	Ability: WATCHFUL Defends a 2 tile radius after initial placement
+	Movement: No movement after initial placement.
+	Ability: WATCHFUL EYE - Defends a 2 tile radius after initial placement, meaning any enemy unit moving onto one of those tiles will be destroyed.
 Assassin(As)
 	Summon range: 5 tiles
 	Movement: Assassin moves to target unoccupied tile within 7 tiles diagonally.
-	Ability: ASSASSINATE - Assassin destroys target unit within 1 tile vertical or horizontal.
+	Ability: ASSASSINATE - Assassin destroys target unit within 2 tiles diagonally.
 Firebound Apprentice(FS)
 	Summon range: 3 tiles
-	Movement: Firebound Mage moves to target unoccupied tile within 2 tiles vertical or horizontal.
+	Movement: Firebound Mage moves to target unoccupied tile within 2 tiles vertical or horizontal
 	Ability: BURN BRIGHT: Firebound Mage enters the battlefield with 5 charge counters. When a charge counter is removed from Firebound Mage, if it has no charge counters, destroy it.
 	Ability: EXPLOSIVE ENTRANCE: Firebound Mage moves to target unoccupied tile within 7 tiles. Destroy each unit within 1 tile of Firebound Mage.
-		Remove one charge counter.
-	Ability: FIREBOLT: Firebound Mage destroys target unit within 3 tiles. Remove 2 charge counters.
+		Remove 2 charge counters.
+	Ability: FIREBOLT: Firebound Mage destroys target unit within 3 tiles. Remove 1 charge counter.
 
 
-Non-unit summoning cards:   
+Non unit-summoning cards:   
 
 Fireball
 	Summon Range: 8 tiles
-	Movement: No movement
 	Ability: The commander can use the card in a radius of 8 tiles. Upon using the card, it destroys in a 3 tile radius of where it was placed. 
 
 
@@ -38,6 +37,6 @@ Fireball
 Rules:
 
 	1. Use your turn either by playing a card from your hand or using an ability of a unit you control.
-	2. Place your units strategically to protect your Commander while seeking to capture the enemy Commander.
-	4. Units can be captured/destroyed by certain abilities and cards. If all means of capturing a Commander other than a Commander itself are expended, the game ends in a draw.
-	5. Capturing a Commander results in that Commander's controlling losing the game. If both Commanders are captured at once, the game will result in a draw. 
+	2. Place your units strategically to protect your Commander and threaten the enemy Commander.
+	4. Units can be captured/destroyed by certain abilities and cards. If all means of capturing a Commander other than a Commander itself or Guard Tower are expended, the game ends in a draw.
+	5. Capturing a Commander results in that Commander's controller losing the game. If both Commanders are captured at the same time, the game will result in a draw. 
