@@ -292,7 +292,7 @@ function passTurn(){
         stack.resolveTop()
     }
 
-
+    checkForStalemate()
     tileSelected = null
     unitSelected = null
     actionSelected = null
@@ -301,4 +301,29 @@ function passTurn(){
 
     let message = "Player " + turn + " turn:"
     log.push(message)
+}
+
+/*
+    post: checks both players hands and the board to see if there are any units capable of capturing a commander. If not, the game results in a draw.
+*/
+function checkForStalemate(){
+    let cardsRemain = true
+    let unitsRemain = false
+    if(player1.hand.cards.length == 0 && player2.hand.cards.length == 0){
+        cardsRemain = false                                                 //if neither player has any cards in hand, cardsRemain is false
+    }
+    for (let x = 0; x < map.xWidth; x++) {                              //loop through map x coords
+        for (let y = 0; y < map.yHeight; y++) {                         //loop through map y coords
+            try {                                                       //try catch for error when the tile doesn't have a unit
+                let unit = map.tiles[x][y].unit
+                if (unit.symbol != "*" && unit != "GT" && unit.symbol != null) {      //if there is any tile that contains a unit other than a Commander
+                    unitsRemain = true                           //unitsRemain is true
+                }   
+            } catch (error) {
+            }
+        }                
+    }
+    if(cardsRemain == false && unitsRemain == false){
+        gameWon = 0
+    }
 }
