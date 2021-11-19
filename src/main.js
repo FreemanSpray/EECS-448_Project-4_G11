@@ -316,7 +316,7 @@ function checkForStalemate(){
         for (let y = 0; y < map.yHeight; y++) {                         //loop through map y coords
             try {                                                       //try catch for error when the tile doesn't have a unit
                 let unit = map.tiles[x][y].unit
-                if (unit.symbol != "*" && unit != "GT" && unit.symbol != null) {      //if there is any tile that contains a unit other than a Commander
+                if (unit.symbol != "*" && unit.symbol != "GT" && unit.symbol != null) {      //if there is any tile that contains a unit other than a Commander
                     unitsRemain = true                           //unitsRemain is true
                 }   
             } catch (error) {
