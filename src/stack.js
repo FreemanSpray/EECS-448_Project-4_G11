@@ -4,14 +4,27 @@ class Stack{
         this.tempStack = []
     
     }
+
+    /*
+    @post       ability is pushed to the stack
+    @param      ability, a copy of an ability with all necessary information for resolution filled in
+    */
     pushAbility(ability){
         this.stack.push(ability)
     }
 
+    /*
+    @post       triggered ability is pushed to the temp stack
+    @param      triggeredAbility, a copy of a triggered ability with all necessary information for resolution filled in
+    */
     pushTrigger(triggeredAbility){
         this.tempStack.push(triggeredAbility)
     }
 
+    /*
+    @pre        the stack is not empty
+    @post       ability on top of the stack is resolved, then all abilities that were triggered are pushed
+    */
     resolveTop(){
         //call the resolve function of the ability on top
         let ability = this.stack.pop()
@@ -26,6 +39,9 @@ class Stack{
         this.tempStack = []
     }
 
+    /*
+    @return     whether or not the stack is empty
+    */
     isEmpty(){
         if (this.stack.length == 0) {
             return true
@@ -35,6 +51,9 @@ class Stack{
         }
     }
 
+    /*
+    @post       the stack is cleared
+    */
     clear(){
         this.stack = []
     }

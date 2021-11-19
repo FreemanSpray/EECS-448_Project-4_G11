@@ -10,6 +10,10 @@ class Unit {
         initializeUnit(this)
     }
 
+    /*
+    @pre        the unit is on the map
+    @return     the tile the unit occupies
+    */
     getTile(){
         for (let x = 0; x < map.xWidth; x++) {
             for (let y = 0; y < map.yHeight; y++) {
@@ -20,6 +24,10 @@ class Unit {
         }
     }
 
+    /*
+    @pre        the unit has been initialized
+    @return     a list of the unit's activated abilities
+    */
     getActivatedAbilities(){
         let activatedAbilities = [...this.abilities]
 
@@ -31,6 +39,10 @@ class Unit {
         return activatedAbilities
     }
 
+    /*
+    @pre        the unit has been initialized
+    @return     a list of the unit's triggered abilities
+    */
     getTriggeredAbilities(){
         let triggeredAbilities = [...this.abilities]
 
@@ -43,6 +55,12 @@ class Unit {
     }
 }
 
+
+/*
+@pre        the unit has been constructed and has a name and owner
+@post       the unit is initialized
+@param      unit, the unit to initialize
+*/
 function initializeUnit(unit) {
     let name = unit.name
 

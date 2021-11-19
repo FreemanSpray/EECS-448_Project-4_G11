@@ -1,3 +1,9 @@
+/*
+@pre        map has been constructed
+@param      sourceTile, the tile in the center of the range
+@param      range, the characteristic number of the range
+@return     an array representing map tiles that are in range
+*/
 function radialRange(sourceTile, range){
     const width = map.xWidth, height = map.yHeight;
     const initialVal = false;
@@ -21,6 +27,12 @@ function radialRange(sourceTile, range){
     return arr
 }
 
+/*
+@pre        map has been constructed
+@param      sourceTile, the tile in the center of the range
+@param      range, the characteristic number of the range
+@return     an array representing map tiles that are in range
+*/
 function straightRange(source, range){
     const width = map.xWidth, height = map.yHeight;
     const initialVal = false;
@@ -46,6 +58,12 @@ function straightRange(source, range){
     return arr
 }
 
+/*
+@pre        map has been constructed
+@param      sourceTile, the tile in the center of the range
+@param      range, the characteristic number of the range
+@return     an array representing map tiles that are in range
+*/
 function diagonalRange(sourceTile, range){
     const width = map.xWidth, height = map.yHeight;
     const initialVal = false;

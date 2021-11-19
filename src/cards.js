@@ -7,10 +7,21 @@ class Card{
         initializeCard(this)
     }
 
+    /*
+    @pre        card has an ability
+    @return     a boolean array representing the map tiles in range
+    */
     getRange(){
         return this.ability.getRange()
     }
 
+
+    /*
+    @pre        card has been initialized
+    @post       attempts to play the card
+    @param      targetTile, the tile the card is targeting
+    @return     whether or not the card was successfully played
+    */
     play(targetTile){
         if (this.ability.activate(targetTile)) {
             //remove card from hand
@@ -25,6 +36,11 @@ class Card{
 
 }
 
+/*
+@pre        card object has been created and has a name and owner
+@post       card object is initialized
+@param      card, the card to initialize
+*/
 function initializeCard(card){
     let name = card.name
 

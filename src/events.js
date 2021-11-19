@@ -3,6 +3,10 @@ class Event{
         this.sourceAbility = sourceAbility
     }
     
+    /*
+    @pre        specific subclass object of event has been constructed
+    @post       all triggered abilities are checked, those that are triggered are added to the tempStack
+    */
     checkForTriggers(){
         //iterate through map's tiles
         for (let x = 0; x < map.xWidth; x++) {
@@ -24,6 +28,10 @@ class Event{
         }
     }
     
+    /*
+    @pre        specific subclass object of event has been constructed
+    @post       event is executed
+    */
     execute(){
         this.checkForTriggers()
         this.doEvent()

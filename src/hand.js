@@ -11,11 +11,21 @@ class Hand{
         this.cards[4] = new Card("Firebound Apprentice", this.owner)
     }
 
+    /*
+    @pre        deck has cards in it
+    @post       a card is drawn from the deck and added to the hand
+    @param      deck, the deck object to draw from
+    */
     draw(deck){
         let card = deck.cards.pop()
         this.cards.push(card)
     }
 
+    /*
+    @pre        hand is not empty
+    @post       a card is discarded from the hand
+    @param      card, the card to discard
+    */
     discard(card){
         let cardIndex = this.cards.indexOf(card)
         this.cards.splice(cardIndex, 1)
@@ -32,6 +42,10 @@ class Deck{
         this.cards[2] = new Card("Fireball", this.owner)
     }
 
+    /*
+    @pre        deck has cards to shuffle
+    @post       the order of the cards in the deck are shuffled
+    */
     shuffle(){
         let array = this.cards
         let currentIndex = array.length,  randomIndex;

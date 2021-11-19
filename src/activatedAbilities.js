@@ -16,6 +16,11 @@ class ActivatedAbility {
         this.targetTile
     }
 
+    /*
+    @pre        A tile is selected
+    @pre        ability is initialized
+    @return     A boolean array representing map tiles in range
+    */
     getRange(){
         if (this.rangeType == "radial") {
             return radialRange(tileSelected, this.range)
@@ -26,6 +31,10 @@ class ActivatedAbility {
         }
     }
 
+    /*
+    @pre        ability is initialized
+    @return     whether or not the ability's conditions have been met
+    */
     conditionsMet(){
         let met = true
 
@@ -60,6 +69,12 @@ class ActivatedAbility {
         return met
     }
     
+
+    /*
+    @pre        ability is initialized
+    @param      the tile being targeted
+    @return     whether or not the target meets the ability's conditions
+    */
     targetConditionsMet(targetTile){
         let valid = true
 
@@ -92,11 +107,23 @@ class ActivatedAbility {
         return valid
     }
 
+    /*
+    @pre        the ability is being activated and a copy is being put on the stack
+    @post       the source tile and unit of the ability are set
+    @param      tile, the ability's source tile
+    @param      unit, the ability's source unit
+    */
     setSource(tile, unit){
         this.sourceTile = tile
         this.sourceUnit = unit
     }
 
+    /*
+    @pre        a target tile has been clicked
+    @post       the ability attempts to activate
+    @param      targetTile, the tile being targeted by the ability
+    @return     whether or not the ability successfully activated
+    */
     activate(targetTile){
         if (this.conditionsMet() && this.targetConditionsMet(targetTile)) {
             let copy = new ActivatedAbility(this.name, this.sourceUnit)
@@ -111,6 +138,10 @@ class ActivatedAbility {
         }
     }
 
+    /*
+    @pre        ability is on the stack
+    @post       ability is resolved off the stack
+    */
     resolve(){
         //This function is defined dynamically for each ability name
     }
@@ -118,7 +149,11 @@ class ActivatedAbility {
 }
 
 
-
+/*
+@pre        ability object has been created and has a name and owner
+@post       ability object is initialized
+@param      ability, the ability to initialize
+*/
 function initializeActivatedAbility(ability){
     let name = ability.name
 

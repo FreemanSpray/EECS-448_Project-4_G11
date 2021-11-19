@@ -12,6 +12,11 @@ class TriggeredAbility{
         this.targetTile
     }
 
+    /*
+    @pre        the trigger object has been initialized
+    @post       an event is checked to see if the ability is pushed to the stack
+    @param      event, an event being executed
+    */
     trigger(event){
         //Check if the event passed triggers this ability
         //Check if all conditions for ability are met
@@ -19,11 +24,20 @@ class TriggeredAbility{
         //Construct the necessary events and add them to the stack in order
     }
 
+    /*
+    @pre        the trigger object has been initialized and is on the stack
+    @post       the ability is resolved off the stack
+    */
     resolve(){
 
     }
 }
 
+/*
+@pre        the trigger object has been constructed and has a name and owner
+@post       the triggered ability is initialized
+@param      ability, the triggered ability to initialize
+*/
 function initializeTriggeredAbility(ability){
     let name = ability.name
 
