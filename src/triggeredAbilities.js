@@ -95,7 +95,7 @@ function initializeTriggeredAbility(ability){
     }
     
     else if (name == "Firebound Apprentice: Burn Bright") {
-        ability.tag = "Burn"
+        ability.tag = "Burn Bright"
         function trigger(event){
             if (event.eventID == "remove_counter_from_unit" && event.counterType == "Charge" && event.unit == this.sourceUnit) {
                 //Check number of charge counters
